@@ -1,0 +1,15 @@
+#!/bin/sh
+
+alias \
+    ka="killall" \
+	mkd="mkdir -pv" \
+	lsall="ls -lahN --color=auto --group-directories-first" \
+    dotf="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
+    copy="xclip -selection clipboard" \
+    x="exit" \
+    c="clear" \
+    o="wd" \
+    rcli="source $HOME/.zshrc" \
+    ecli="$EDITOR $HOME/.zshrc" \
+
+command -v nvim >/dev/null && alias vim="$EDITOR" vimdiff="$EDITOR -d" nvi="$EDITOR"

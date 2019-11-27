@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+current_dir=$(pwd)
+cmd="nvim"
+
+if [ ! -z "$1" ]; then
+    if [ ! -d "$1" ]; then
+        cd `dirname $1`
+        cmd="nvim $(basename $1)"
+    else
+        cd "$1"
+    fi
+fi
+
+docker run \
+    --rm \
+    --privileged \
+    -it \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /usr/bin/docker:/usr/local/bin/docker \
+    -v /usr/bin/python3:/usr/local/bin/python3 \
+    -v `pwd`:/workspace/app \
+    -v $NEOVIM_DIR/config/init.vim:/workspace/.config/nvim/init.vim \
+    -v $NEOVIM_DIR/config/spell:/workspace/.config/nvim/spell \
+    -v $NEOVIM_DIR/config/coc-settings.json:/workspace/.config/nvim/coc-settings.json \
+    -v $NEOVIM_DIR/config/ftplugin:/workspace/.config/nvim/ftplugin \
+    -v $NEOVIM_DIR/ultisnips:/workspace/.config/coc/ultisnips \
+    -v $NEOVIM_DIR/cache/dev:/workspace/.config/nvim/dev \
+    -v $NEOVIM_DIR/cache/plugged:/workspace/.vim-plugged \
+    -v $NEOVIM_DIR/cache/history:/workspace/.vim-history \
+    -v $NEOVIM_DIR/cache/fzf:/workspace/.fzf \
+    -v $NEOVIM_DIR/cache/coc:/workspace/.config/coc \
+    -v $NEOVIM_DIR/bin:/workspace/.bin \
+    neovim:latest \
+    sh -c "$cmd"
+
+cd "$current_dir"
+
+# vm:ft=sh
+

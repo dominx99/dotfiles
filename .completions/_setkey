@@ -1,0 +1,9 @@
+#compdef setkey
+
+local line
+
+_arguments -C \
+    "-h[Show help information]" \
+    "--h[Show help information]" \
+    "1: :(jendrusha ingenious)" \
+    "*::arg:->args"

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+current_dir=$(pwd)
+cmd="nvim"
+
+if [ ! -z "$1" ]; then
+    if [ ! -d "$1" ]; then
+        cd `dirname $1`
+        cmd="nvim $(basename $1)"
+    else
+        cd "$1"
+    fi
+fi
+
+$cmd

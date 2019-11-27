@@ -1,0 +1,64 @@
+{
+    "ecs": {
+        "execution_path": "/workspace/ecs",
+        "application_path": "/application",
+        "commands": {
+            "composer": {
+                "container": "ecs_php",
+                "sh": "composer"
+            },
+            "artisan": {
+                "container": "ecs_php",
+                "sh": "php artisan"
+            }
+        }
+    },
+    "empyee": {
+        "execution_path": "/workspace/empyee",
+        "application_path": "/application",
+        "commands": {
+            "composer": {
+                "container": "empyee-php",
+                "sh": "composer"
+            }
+        }
+    },
+    "secrets": {
+        "execution_path": "/workspace/secrets",
+        "application_path": "/application",
+        "commands": {
+        }
+    },
+    "monitor": {
+        "execution_path": "/workspace/monitor",
+        "application_path": "/apps/api",
+        "commands": {
+            "phpc": {
+                "container": "php",
+                "sh": "composer"
+            },
+            "phpa": {
+                "container": "php",
+                "sh": "php artisan"
+            }
+        }
+    },
+    "ingenious": {
+        "execution_path": "/workspace/ingenious/docker",
+        "application_path": "/var/www/html",
+        "commands": {
+            "phpc": {
+                "container": "cement",
+                "sh": "cd api && composer"
+            },
+            "phpa": {
+                "container": "cement",
+                "sh": "cd api && php artisan"
+            }
+        },
+        "raw": {
+            "fstart": "cd $HOME/workspace/ingenious/iCON-web-app && docker run --rm -it -v $(pwd):/app -w /app ingenious/node:6.14.3 npm run start-local"
+        }
+    }
+}
+

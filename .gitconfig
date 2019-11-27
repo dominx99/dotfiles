@@ -1,0 +1,25 @@
+[user]
+	name = Jendrusha
+	email = jendrusha@gmail.com
+[core]
+	excludesfile = /home/domin/.gitignore
+	autocrlf = input
+[commit]
+	template = /home/domin/.gitmessage
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[merge]
+	; conflictstyle = diff3
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    co = checkout
+    coall = checkout -- .
+	st = status
+    pushnew = push -u origin HEAD
+    push = push origin HEAD
+    prune-branches = !git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D
+    preview = !bat $(git ls-files --others --exclude-standard)
+    deletelast = reset --soft HEAD~

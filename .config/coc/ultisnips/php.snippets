@@ -1,0 +1,203 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet class "New PHP class" b
+<?php declare(strict_types=1);
+
+namespace ${1:namespace};
+
+final class ${2:ClassName}
+{
+	${3://}
+}
+endsnippet
+
+snippet trait "New PHP trait" b
+<?php declare(strict_types=1);
+
+namespace ${1:namespace};
+
+trait ${2:Trait}
+{
+	${3://}
+}
+endsnippet
+
+snippet interface "New PHP interface" b
+<?php declare(strict_types=1);
+
+namespace ${1:namespace};
+
+interface ${2:Interface}
+{
+	${3://}
+}
+endsnippet
+
+snippet entity "Doctrine Entity" b
+<?php declare(strict_types=1);
+
+use \Doctrine\ORM\Mapping as ORM;
+
+namespace ${1:namespace};
+
+final class ${2:Entity}
+{
+	/**
+	 * @var \Ramsey\Uuid\UuidInterface
+	 *
+	 * @ORM\Id
+	 * @ORM\Column(type="uuid", unique=true)
+	 */
+	private $id;
+}
+endsnippet
+
+snippet inheritance "Inheritance" b
+<?php declare(strict_types=1);
+
+use \Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"map" = "Map"})
+ */
+class ${1:Class}
+{
+	/**
+     * @var string
+     *
+     * @ORM\Id
+     * @ORM\Column(type="uuid", unique=true)
+     */
+	protected $id;
+}
+endsnippet
+
+
+snippet embedded "Doctrine embedded" b
+/**
+ * @var ${1:Class}
+ *
+ * @ORM\Embedded(class="${2:Class}", columnPrefix=false)
+ */
+private $${3:property};
+endsnippet
+
+snippet column "Doctrine column" b
+/**
+ * @var string
+ *
+ p @ORM\Column(name="${1:column}", type="integer", nullable=true)
+ */
+private $${2:column};
+endsnippet
+
+snippet oneToOne "Doctrine OneToOne relation" b
+/**
+ * @var ${1:Class}
+ *
+ * @ORM\OneToOne(targetEntity="${2:Class}", inversedBy="${3:inversedBy}")
+ * @ORM\JoinColumn(name="${4:column}", referencedColumnName="id")
+ */
+private $${5:property};
+endsnippet
+
+snippet oneToOneInversed "Doctrine OneToOne relation" b
+/**
+ * @var ${1:Class}
+ *
+ * @ORM\OneToOne(targetEntity="${2:Class}", mappedBy="${3:mappedBy}")
+ */
+private $${4:property};
+endsnippet
+
+snippet oneToMany "Doctrine OneToMany relation" b
+/**
+ * @var \Doctrine\Common\Collections\ArrayCollection|${1:Class}[]
+ *
+ * @ORM\OneToMany(targetEntity="${2:Class}", mappedBy="${3:mappedBy}", cascade={"persist"})
+ */
+private $${4:property};
+endsnippet
+
+snippet manyToOne "Doctrine ManyToOne relation" b
+/**
+ * @var ${1:Class}
+ *
+ * @ORM\ManyToOne(targetEntity="${2:Class}", inversedBy="${3:inversedBy}")
+ * @ORM\JoinColumn(name="${4:column}", referencedColumnName="id")
+ */
+private $${5:property};
+endsnippet
+
+snippet addRelation "Doctrine add relation" b
+/**
+ * @param ${1:Class} $${2:property}
+ * @return void
+ */
+public function ${3:addRelation}(${4:Class} $${5:property}): void
+{
+	if ($this->${6:properties}->contains($${7:property})) {
+		return;
+	}
+
+	$this->${8:properties}->add(${10:property});
+	$${11:property}->${12:setRelation}($this);
+}
+endsnippet
+
+snippet setRelation "Doctrine set relation" b
+/**
+ * @param ${1:Class} $${2:property}
+ * @return void
+ */
+public function ${3:setRelation}(${4:Class} $${5:property}): void
+{
+	if ($this->${6:property} === $${7:property}) {
+		return;
+	}
+
+	$this->${8:property} = $${9:property};
+	$${10:property}->${11:addRelation}($this);
+}
+endsnippet
+
+snippet private "New PHP method" b
+${1:private} function ${2:funcName}
+{
+	${3://}
+}
+endsnippet
+
+snippet dump "Simple dump and die" b
+var_dump($${1:variable});die();
+endsnippet
+
+snippet response "Dump and die response" b
+var_dump((string) $response->getBody());die();
+endsnippet
