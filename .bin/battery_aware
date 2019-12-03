@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+const util = require('util')
+const exec = util.promisify(require('child_process').exec)
+
+async function aware() {
+  let now = await getNow();
+  let full = await getFull();
+
+  let percent = Math.round(now / full * 100)
+  let title = "'Low battery " + percent + "%'"
+  let body = "'Connect for charging'"
+
+  if (percent < 10) {
+    await exec("notify-send " + title + " " + body)
+  }
+}
+
+async function getNow() {
+  const { stdout, stderr } = await exec('cat /sys/class/power_supply/BAT0/charge_now')
+
+  if (stderr) {
+    console.log(err)
+
+    return
+  }
+
+  return stdout
+}
+
+async function getFull() {
+  const { stdout, stderr } = await exec('cat /sys/class/power_supply/BAT0/charge_full')
+
+  if (stderr) {
+    console.log(err)
+
+    return
+  }
+
+  return stdout
+}
+
+
+aware()
