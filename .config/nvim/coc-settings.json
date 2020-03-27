@@ -2,6 +2,9 @@
     "diagnostic.checkCurrentLine": true,
     "html.filetypes": ["html", "htmlcheetah"],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+      "dart"
+    ],
     "vetur.dev.vlsPath": "/usr/lib/node_modules/vue-language-server",
     "coc.source.buffer.priority": 10,
     "coc.source.around.priority": 20,
@@ -175,6 +178,11 @@
             "command": "ra_lsp_server",
             "filetypes": ["rust"],
             "rootPatterns": ["Cargo.toml"]
+        },
+        "dart": {
+          "command": "dart_language_server",
+          "trace.server": "verbose",
+          "filetypes": ["dart"]
         }
     }
 }

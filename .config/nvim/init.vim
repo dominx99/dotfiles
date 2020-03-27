@@ -25,6 +25,9 @@ call plug#begin('~/.vim-plugged')
     Plug 'mxw/vim-jsx'
     Plug 'chriskempson/base16-vim'
     Plug 'daviesjamie/vim-base16-lightline'
+    Plug 'dart-lang/dart-vim-plugin'
+    Plug 'natebosch/vim-lsc'
+    Plug 'natebosch/vim-lsc-dart'
 
     Plug '~/.config/nvim/dev/phpbooster'
 call plug#end()
@@ -239,7 +242,8 @@ nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprevious<CR>
 
 inoremap " ""<left>
-inoremap ''' '<left>
+inoremap ' ''<left>
+inoremap ` ``<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
@@ -330,6 +334,8 @@ nmap gs <Plug>(GitGutterPreviewHunk)
 nmap gn <Plug>(GitGutterNextHunk)
 nmap gp <Plug>(GitGutterPrevHunk)
 nmap gu <Plug>(GitGutterUndoHunk)
+
+nmap <leader>fr <PLug>(flutter.run)
 
 set winblend=3
 let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:15,pointer:1,marker:4,spinner:11,header:-1,border:0,gutter:-1 --layout=reverse  --margin=1,2'
@@ -475,3 +481,10 @@ function! s:parse_error(err) abort
 
   return ({'bufnr' : l:match[0],'linenr' : l:line_number, 'colnr':l:col_number, 'text': l:error_msg})
 endfunction
+
+let g:lsc_auto_map = v:true
+let g:lsc_enable_autocomplete = v:false
+let g:lsc_server_commands = {'dart': 'dart_language_server'}
+
+autocmd FileType php setlocal iskeyword-=$
+autocmd FileType javascript setlocal iskeyword+=$
