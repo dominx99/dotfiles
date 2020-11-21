@@ -30,12 +30,6 @@ call plug#begin('~/.vim-plugged')
     Plug 'natebosch/vim-lsc-dart'
 
     Plug '~/.config/nvim/dev/phpbooster'
-    Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
-        \ }
-
-    Plug 'rafi/awesome-vim-colorschemes'
 call plug#end()
 
 function! PlugLoaded(name)
@@ -59,7 +53,6 @@ command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
 command! NvimSettings silent! execute "vsp $MYVIMRC"
 command! GoSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/go.vim"
 command! PhpSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/php.vim"
-command! CppSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/cpp.vim"
 command! JavascriptSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/javascript.vim"
 command! ReloadNvim silent! execute "so $MYVIMRC" | echo "Nvim reloded"
 command! -nargs=1 JumpToTag call JumpToTag(<f-args>, ['f', 'function', 'c', 'class', 'i', 'interface', 't', 'trait'])
@@ -119,12 +112,9 @@ set wildmode=longest,list,full
 set termguicolors
 set background=dark
 try
-    " colorscheme 256_noir " total black
-    " colorscheme onedark " generally nice scheme
-    " colorscheme gruvbox " retro but looks very good
-    " colorscheme base16-google-dark " very good contrast, one of the best
-    " colorscheme ayu " very nice dark scheme
-    colorscheme challenger_deep " space (violet) colors
+    " colorscheme onedark
+    " colorscheme gruvbox
+    colorscheme base16-google-dark
 catch
 endtry
 set go=a
@@ -353,13 +343,13 @@ set winblend=3
 let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:15,pointer:1,marker:4,spinner:11,header:-1,border:0,gutter:-1 --layout=reverse  --margin=1,2'
 
 " Using the custom window creation function
-let g:fzf_layout = { 'window': 'call FloatingFZF(160, 26)' }
+let g:fzf_layout = { 'window': 'call FloatingFZF(100, 22)' }
 
 function! FloatingFZF(width, height)
     let width = a:width
     let height = a:height
 
-    let top = 2
+    let top = 1
     let left = float2nr((&columns - width) / 2)
 
     let opts = {
@@ -420,13 +410,13 @@ function! FloatingFZF2(width, height)
 endfunction
 
 function! SearchInProject()
-    let g:fzf_layout = { 'window': 'call FloatingFZF(190, 36)' }
+    let g:fzf_layout = { 'window': 'call FloatingFZF(140, 30)' }
     let term = input("Search term: ")
 
     if l:term != ""
         call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case "' . l:term . '"', 1,fzf#vim#with_preview('right:60%'))
     endif
-    let g:fzf_layout = { 'window': 'call FloatingFZF(160, 26)' }
+    let g:fzf_layout = { 'window': 'call FloatingFZF(100, 22)' }
 endfunction
 
 map <M-F> :call SearchInProject()<CR>
@@ -576,26 +566,3 @@ omap af <Plug>(coc-funcobj-a)
 command! -nargs=0 Format :call CocAction('format')
 
 imap cll console.log({});<Esc>==f{a 
-
-" Let clangd fully control code completion
-let g:ycm_clangd_uses_ycmd_caching = 0
-" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
-let g:ycm_clangd_binary_path = exepath("clangd")
-
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-    \ }
-
-" note that if you are using Plug mapping you should not use `noremap` mappings.
-" nmap <F5> <Plug>(lcn-menu)
-" Or map each action separately
-" nmap <silent>K <Plug>(lcn-hover)
-" nmap <silent> gd <Plug>(lcn-definition)
-" nmap <silent> <F2> <Plug>(lcn-rename)

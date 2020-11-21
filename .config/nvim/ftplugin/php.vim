@@ -3,6 +3,9 @@ echomsg "PHP ftplugin loaded!"
 setlocal foldmethod=indent
 setlocal foldlevelstart=1
 setlocal foldlevel=1
+set sts=4
+set ts=4
+set sw=4
 
 " available 'length', 'alpha', 'no'
 let g:vim_php_use_sort = 'no'
@@ -1122,6 +1125,9 @@ function! s:GetTagKind(tag)
     return s:kinds[a:tag.kind]
 endfunction
 
-set colorcolumn=120
-highlight ColorColumn ctermbg=236 guibg=#242930 ctermfg=236 guifg=#d70000
-let &colorcolumn=join(range(120,999),',')
+" set colorcolumn=120
+" highlight ColorColumn ctermbg=236 guibg=#242930 ctermfg=236 guifg=#d70000
+" let &colorcolumn=join(range(120,999),',')
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)

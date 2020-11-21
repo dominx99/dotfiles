@@ -1,4 +1,12 @@
 {
+    "emmet": {
+      "includeLanguages": {
+        "vue": "html",
+        "html": "vue",
+        "vue-html": "html",
+        "javascript": "javascriptreact"
+      }
+    },
     "diagnostic.checkCurrentLine": true,
     "html.filetypes": ["html", "htmlcheetah"],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
