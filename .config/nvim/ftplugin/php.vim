@@ -6,6 +6,9 @@ setlocal foldlevel=1
 set sts=4
 set ts=4
 set sw=4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 " available 'length', 'alpha', 'no'
 let g:vim_php_use_sort = 'no'

@@ -28,6 +28,7 @@ call plug#begin('~/.vim-plugged')
     Plug 'dart-lang/dart-vim-plugin'
     Plug 'natebosch/vim-lsc'
     Plug 'natebosch/vim-lsc-dart'
+    Plug 'nelsyeung/twig.vim'
 
     Plug '~/.config/nvim/dev/phpbooster'
     Plug 'autozimu/LanguageClient-neovim', {
@@ -123,8 +124,8 @@ try
     " colorscheme onedark " generally nice scheme
     " colorscheme gruvbox " retro but looks very good
     " colorscheme base16-google-dark " very good contrast, one of the best
-    " colorscheme ayu " very nice dark scheme
-    colorscheme challenger_deep " space (violet) colors
+     colorscheme ayu " very nice dark scheme
+    " colorscheme challenger_deep " space (violet) colors
 catch
 endtry
 set go=a
