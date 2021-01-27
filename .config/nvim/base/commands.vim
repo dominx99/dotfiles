@@ -1,0 +1,12 @@
+command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
+command! NvimSettings silent! execute "vsp $MYVIMRC"
+command! PluginsNvim silent! execute "vsp $HOME/.config/nvim/plugins/plugins.vim"
+command! GoSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/go.vim"
+command! PhpSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/php.vim"
+command! CppSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/cpp.vim"
+command! JavascriptSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/javascript.vim"
+command! ReloadNvim silent! execute "so $MYVIMRC" | echo "Nvim reloded"
+command! -nargs=1 JumpToTag call JumpToTag(<f-args>, ['f', 'function', 'c', 'class', 'i', 'interface', 't', 'trait'])
+command! FocusOnFile silent! NERDTreeFind
+command! DeleteCurrentFile call delete(expand('%')) | bdelete!
+command! SudoSave :execute 'silent w !sudo tee % > /dev/null' | :edit!
