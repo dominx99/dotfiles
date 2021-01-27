@@ -16,8 +16,3 @@ resources/assets/products/seeds2.json
 .cache/
 storage/tmp/
 .bash_history
-
-docker-compose.yml
-.docker/
-workspace/atrealty/api/docker-compose.yml
-workspace/atrealty/api/.docker/

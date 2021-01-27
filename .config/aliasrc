@@ -12,6 +12,7 @@ alias \
     rcli="source $HOME/.zshrc" \
     ecli="$EDITOR $HOME/.zshrc" \
     rm='echo "This is not the command you are looking for."; false' \
-    ia='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq)'
+    ia='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq)' \
+    t='trash'
 
 command -v nvim >/dev/null && alias vim="$EDITOR" vimdiff="$EDITOR -d" nvi="$EDITOR"

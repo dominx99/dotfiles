@@ -34,6 +34,19 @@ final class ${2:ClassName}
 }
 endsnippet
 
+snippet test "New PHP test" b
+<?php declare(strict_types=1);
+
+namespace ${1:Tests};
+
+use Tests\BaseTestCase;
+
+final class ${2:ClassName} extends BaseTestCase
+{
+	${3://}
+}
+endsnippet
+
 snippet trait "New PHP trait" b
 <?php declare(strict_types=1);
 
@@ -187,10 +200,17 @@ public function ${3:setRelation}(${4:Class} $${5:property}): void
 }
 endsnippet
 
-snippet private "New PHP method" b
-${1:private} function ${2:funcName}
+snippet private "New PHP private method" b
+private function ${2:methodName}()
 {
-	${3://}
+
+}
+endsnippet
+
+snippet public "New PHP public method" b
+public function ${2:methodName}()
+{
+
 }
 endsnippet
 
@@ -201,3 +221,101 @@ endsnippet
 snippet response "Dump and die response" b
 var_dump((string) $response->getBody());die();
 endsnippet
+
+snippet body "Parsed body of response" b
+$body = json_decode((string) $response->getBody(), true);
+endsnippet
+
+snippet rules "New rules" b
+<?php declare(strict_types=1);
+
+namespace App\\${1:};
+
+use App\Shared\Contracts\Validation\Rules;
+use Respect\Validation\Validator as v;
+
+final class ${2:Rule} implements Rules
+{
+	public function rules(): array
+	{
+		return [
+			"${3:}"
+		];
+	}
+}
+endsnippet
+
+snippet query "New CQRS Query" b
+<?php declare(strict_types=1);
+
+namespace ${1:namespace};
+
+use App\Shared\Contracts\Query;
+
+final class ${2:ClassName} implements Query
+{
+	${3://}
+}
+endsnippet
+
+snippet command "New CQRS Command" b
+<?php declare(strict_types=1);
+
+namespace ${1:namespace};
+
+use App\Shared\Contracts\Command;
+
+final class ${2:ClassName} implements Command
+{
+	${3://}
+}
+endsnippet
+
+snippet queryhandler "New CQRS Query Handler" b
+<?php declare(strict_types=1);
+
+namespace ${1:namespace};
+
+use App\Shared\Contracts\QueryHandler;
+use Doctrine\DBAL\Connection;
+
+final class ${2:ClassName} implements QueryHandler
+{
+	private Connection $connection;
+
+	public function __construct(Connection $connection)
+	{
+		$this->connection = $connection;
+	}
+
+	public function handle()
+	{
+		${3://}
+	}
+}
+endsnippet
+
+snippet commandhandler "New CQRS Command Handler" b
+<?php declare(strict_types=1);
+
+namespace ${1:namespace};
+
+use App\Shared\Contracts\CommandHandler;
+use Doctrine\DBAL\Connection;
+
+final class ${2:ClassName} implements CommandHandler
+{
+	private Connection $connection;
+
+	public function __construct(Connection $connection)
+	{
+		$this->connection = $connection;
+	}
+
+	public function handle(): void
+	{
+		${3://}
+	}
+}
+endsnippet
+

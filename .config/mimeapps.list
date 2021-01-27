@@ -9,3 +9,11 @@ image/jpeg=img.desktop;
 image/gif=img.desktop;
 application/rss+xml=rss.desktop
 x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/viber=viber.desktop
+x-scheme-handler/webcal=chromium.desktop
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/aucapture=aucapture-opener.desktop
+x-scheme-handler/discord-218837120066781184=discord-218837120066781184.desktop
+
+[Added Associations]
+application/pdf=chromium.desktop;

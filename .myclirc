@@ -121,4 +121,5 @@ select_where = select $1 from $2 where $3
 # DNS to call by -d option
 [alias_dsn]
 # example_dsn = mysql://[user[:password]@][netloc][:port][/dbname]
-current = mysql://root:secret@127.0.0.1:3306
+secret = mysql://root:secret@127.0.0.1:3306
+root = mysql://root:root@127.0.0.1:3306

@@ -22,6 +22,8 @@ xhost local:root
 /usr/bin/gnome-keyring-daemon --start --components=secrets &
 /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
+xflux -l 51.1287859 -g 16.9915022 -k 3400
+
 # status bar
 while :; do
     dwmbar &
