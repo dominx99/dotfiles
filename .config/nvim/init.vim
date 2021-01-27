@@ -7,10 +7,10 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim-plugged')
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-	Plug 'scrooloose/nerdtree'
+    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': { -> coc#util#install()}}
+    Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
@@ -76,7 +76,7 @@ let g:indentLine_color_gui = '#585D78'
 let g:indentLine_first_char = '¦'
 let g:indentLine_showFirstIndentLevel = 0
 
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -90,7 +90,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 let g:nerdtree_tabs_autoclose = 0
-let g:NERDTreeShowIgnoredStatus = 1
+let g:NERDTreeGitStatusShowIgnored = 1
 let g:NERDTreeQuitOnOpen = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | w | endif
 
@@ -156,6 +156,18 @@ set belloff+=ctrlg
 set completeopt=menuone,noselect,noinsert
 set signcolumn=yes
 set nofoldenable
+"coc.nvim
+" delays and poor user experience.
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -600,3 +612,9 @@ let g:LanguageClient_serverCommands = {
 " nmap <silent>K <Plug>(lcn-hover)
 " nmap <silent> gd <Plug>(lcn-definition)
 " nmap <silent> <F2> <Plug>(lcn-rename)
+
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
+command! SudoSave :execute 'silent w !sudo tee % > /dev/null' | :edit!

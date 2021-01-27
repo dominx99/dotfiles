@@ -1128,7 +1128,7 @@ function! s:GetTagKind(tag)
     return s:kinds[a:tag.kind]
 endfunction
 
-" set colorcolumn=120
+set colorcolumn=120
 " highlight ColorColumn ctermbg=236 guibg=#242930 ctermfg=236 guifg=#d70000
 " let &colorcolumn=join(range(120,999),',')
 

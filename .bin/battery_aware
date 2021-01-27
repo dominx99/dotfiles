@@ -4,20 +4,19 @@ const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 
 async function aware() {
-  let now = await getNow();
-  let full = await getFull();
+  let capacity = await getCapacity();
+  let isCharging = await getIsCharging();
 
-  let percent = Math.round(now / full * 100)
-  let title = "'Low battery " + percent + "%'"
+  let title = "'Low battery " + capacity.trim(" ") + "%'"
   let body = "'Connect for charging'"
 
-  if (percent < 10) {
+  if (capacity < 15 && ! isCharging) {
     await exec("notify-send " + title + " " + body)
   }
 }
 
-async function getNow() {
-  const { stdout, stderr } = await exec('cat /sys/class/power_supply/BAT0/charge_now')
+async function getCapacity() {
+  const { stdout, stderr } = await exec('cat /sys/class/power_supply/BAT0/capacity')
 
   if (stderr) {
     console.log(err)
@@ -28,8 +27,8 @@ async function getNow() {
   return stdout
 }
 
-async function getFull() {
-  const { stdout, stderr } = await exec('cat /sys/class/power_supply/BAT0/charge_full')
+async function getIsCharging() {
+  const { stdout, stderr } = await exec('cat /sys/class/power_supply/BAT0/status')
 
   if (stderr) {
     console.log(err)
@@ -37,8 +36,7 @@ async function getFull() {
     return
   }
 
-  return stdout
+  return stdout.trim(" ") === "Charging"
 }
-
 
 aware()

@@ -1,13 +1,12 @@
 {
-    "emmet": {
-      "includeLanguages": {
+    "emmet.includeLanguages": {
         "vue": "html",
         "html": "vue",
         "vue-html": "html",
         "javascript": "javascriptreact"
-      }
     },
     "diagnostic.checkCurrentLine": true,
+    "diagnostic.virtualText": false,
     "html.filetypes": ["html", "htmlcheetah"],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.formatOnSaveFiletypes": [
@@ -192,5 +191,6 @@
           "trace.server": "verbose",
           "filetypes": ["dart"]
         }
-    }
+    },
+    "clangd.path": "/home/domin/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
 }

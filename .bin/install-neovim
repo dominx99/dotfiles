@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+git clone https://github.com/neovim/neovim.git $HOME/nviminstaller
+cd $HOME/nviminstaller
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+rm -rf $HOME/nviminstaller
