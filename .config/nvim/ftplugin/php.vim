@@ -1134,3 +1134,5 @@ set colorcolumn=120
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+setlocal iskeyword-=$

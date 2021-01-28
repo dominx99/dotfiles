@@ -34,6 +34,7 @@ set belloff+=ctrlg
 set completeopt=menuone,noselect,noinsert
 set signcolumn=yes
 set nofoldenable
+set winblend=3
 "coc.nvim
 " delays and poor user experience.
 set updatetime=300
@@ -46,3 +47,7 @@ if has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+

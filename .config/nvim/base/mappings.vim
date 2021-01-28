@@ -60,3 +60,9 @@ endfunction
 nnoremap <leader>d "_d
 xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
+
+nnoremap <C-]> <Esc>:JumpToTag <C-r>=expand("<cword>")<CR><CR>
+inoremap <C-T> <Esc>:JumpToTag<Space>
+nnoremap <C-T> :JumpToTag<Space>
+
+map <M-F> :call SearchInProject()<CR>
