@@ -2,7 +2,7 @@ filetype plugin on
 syntax on
 set nocompatible
 set encoding=utf-8
-set number relativenumber
+set number
 set wildmode=longest,list,full
 set termguicolors
 set background=dark
@@ -18,6 +18,7 @@ set smarttab
 set ignorecase
 set smartcase
 set autoindent
+set ai
 set smartindent
 set nohlsearch
 set clipboard=unnamedplus
@@ -51,3 +52,4 @@ endif
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
+filetype plugin indent on

@@ -407,7 +407,7 @@ let s:getter    = 0
 let s:setter    = 0
 
 " The current indentation level of the property (i.e. used for the methods)
-let s:indent    = ''
+" let s:indent    = ''
 
 " The name of the property
 let s:varname   = ''

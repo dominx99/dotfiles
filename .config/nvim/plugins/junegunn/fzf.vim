@@ -72,7 +72,7 @@ function! SearchInProject()
     let term = input("Search term: ")
 
     if l:term != ""
-        call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case --no-ignore -g "!tags" "' . l:term . '"', 1,fzf#vim#with_preview('right:60%'))
+        call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case --hidden --no-ignore -g "!tags" "' . l:term . '"', 1,fzf#vim#with_preview('right:60%'))
     endif
     let g:fzf_layout = { 'window': 'call FloatingFZF(160, 26)' }
 endfunction

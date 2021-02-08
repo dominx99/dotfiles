@@ -29,3 +29,11 @@ function! JumpToTag(name, kinds)
     copen
   endif
 endfunction
+
+function! BuildPhpNamespace()
+    let txt = substitute(expand('%:r'), '\/', '\\', 'g')
+    let txt2 = substitute(txt ,'src', 'App', 'g')
+    let txt3 = substitute(txt2, '\\' . expand('%:t:r'), '', 'g')
+
+    return txt3
+endfunction
