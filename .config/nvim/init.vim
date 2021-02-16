@@ -21,3 +21,4 @@ lua require('plugins/nvim-treesitter/nvim-treesitter')
 lua require('plugins/nvim-telescope/telescope')
 
 autocmd FileType php setlocal iskeyword-=$
+

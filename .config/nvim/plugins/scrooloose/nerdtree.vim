@@ -14,6 +14,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 let g:nerdtree_tabs_autoclose = 0
 let g:NERDTreeGitStatusShowIgnored = 1
 let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeWinSize=60
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | w | endif
 
 map <M-b> :NERDTreeToggle<CR>

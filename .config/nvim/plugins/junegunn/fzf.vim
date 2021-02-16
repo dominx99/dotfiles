@@ -1,7 +1,7 @@
-let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:15,pointer:1,marker:4,spinner:11,header:-1,border:0,gutter:-1 --layout=reverse  --margin=1,2'
+let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:15,pointer:1,marker:4,spinner:11,header:-1,border:0,gutter:-1 --margin=1,2'
 
 " Using the custom window creation function
-let g:fzf_layout = { 'window': 'call FloatingFZF(160, 26)' }
+let g:fzf_layout = { 'window': 'call FloatingFZF(140, 23)' }
 
 function! FloatingFZF(width, height)
     let width = a:width
@@ -68,11 +68,11 @@ function! FloatingFZF2(width, height)
 endfunction
 
 function! SearchInProject()
-    let g:fzf_layout = { 'window': 'call FloatingFZF(190, 36)' }
+    let g:fzf_layout = { 'window': 'call FloatingFZF(140, 23)' }
     let term = input("Search term: ")
 
     if l:term != ""
         call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case --hidden --no-ignore -g "!tags" "' . l:term . '"', 1,fzf#vim#with_preview('right:60%'))
     endif
-    let g:fzf_layout = { 'window': 'call FloatingFZF(160, 26)' }
+    let g:fzf_layout = { 'window': 'call FloatingFZF(140, 23)' }
 endfunction

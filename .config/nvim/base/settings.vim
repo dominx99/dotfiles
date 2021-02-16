@@ -49,7 +49,4 @@ else
   set signcolumn=yes
 endif
 
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
 filetype plugin indent on

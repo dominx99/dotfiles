@@ -10,7 +10,7 @@ inoremap <M-w> <Esc>:bd<CR>
 nnoremap <M-w> :bd<CR>
 inoremap <M-s> <Esc>:w<CR>
 nnoremap <M-s> :w<CR>
-map <silent> <expr> <M-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+map <silent> <expr> <M-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 map <M-o> :GFiles<CR>
 nmap <silent> <Space><Space> :noh<CR>
 map <M-e> :Buffers<CR>

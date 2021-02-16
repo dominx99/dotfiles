@@ -1,5 +1,11 @@
 command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
 command! NvimSettings silent! execute "vsp $MYVIMRC"
+command! BspwmSettings silent! execute "vsp ~/.config/bspwm/bspwmrc"
+command! PolybarSettings silent! execute "vsp ~/.config/polybar/config"
+command! SxhkdSettings silent! execute "vsp ~/.config/sxhkd/sxhkdrc"
+command! AlacrittySettings silent! execute "vsp ~/.config/alacritty/alacritty.yml"
+command! PicomSettings silent! execute "vsp ~/.config/picom/picom.conf"
+command! DwmSxhkdSettings silent! execute "vsp ~/.config/sxhkd.dwm/sxhkdrc"
 command! PluginsNvim silent! execute "vsp $HOME/.config/nvim/plugins/plugins.vim"
 command! GoSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/go.vim"
 command! PhpSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/php.vim"
