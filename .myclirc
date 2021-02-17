@@ -123,3 +123,5 @@ select_where = select $1 from $2 where $3
 # example_dsn = mysql://[user[:password]@][netloc][:port][/dbname]
 secret = mysql://root:secret@127.0.0.1:3306
 root = mysql://root:root@127.0.0.1:3306
+sylius = mysql://sylius:nopassword@10.12.0.7:3306
+thalento = mysql://root:root@10.12.0.3:3306
