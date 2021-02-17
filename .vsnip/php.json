@@ -1,0 +1,71 @@
+{
+  "finali": {
+    "prefix": ["finali"],
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types = 1);",
+      "",
+      "namespace ${VIM:BuildPhpNamespace()};",
+      "",
+      "final class ${VIM:expand('%:t:r')} implements ${VIM:expand('%:t:r')}Interface",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Class definition template."
+  },
+  "final": {
+    "prefix": ["final"],
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types = 1);",
+      "",
+      "namespace ${VIM:BuildPhpNamespace()};",
+      "",
+      "final class ${VIM:expand('%:t:r')}",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Final Class without interface definition template."
+  },
+  "construct": {
+    "prefix": ["construct"],
+    "body": [
+      "public function __construct (",
+      "\t$1",
+      ")",
+      "{}"
+    ],
+    "description": "Construct definition template."
+  },
+  "public": {
+    "prefix": ["public"],
+    "body": [
+      "public function $1($2): $3",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Public method definition template."
+  },
+  "private": {
+    "prefix": ["private"],
+    "body": [
+      "private function $1($2): $3",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Private method definition template."
+  },
+  "namespace": {
+    "prefix": ["namespace"],
+    "body": [
+      "namespace ${VIM:BuildPhpNamespace()};"
+    ],
+    "description": "Namespace template."
+  }
+}
