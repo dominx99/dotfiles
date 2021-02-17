@@ -4,7 +4,7 @@
 export PATH="$PATH:$(du "$HOME/.bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):$HOME/.local/bin/:/usr/bin/"
 export NEOVIM_DIR="/opt/nvim"
 export EDITOR="nvim"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export BROWSER="chromium"
 export READER="zathura"
 export FILE="vifm"
@@ -33,5 +33,5 @@ export WINEARCH="win64"
 echo "$0" | grep "zsh$" >/dev/null && [ -f ~/.zshrc ] && source "$HOME/.zshrc"
 
 # Start graphical server if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x dwm >/dev/null && exec startx
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx
 

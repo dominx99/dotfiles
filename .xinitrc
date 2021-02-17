@@ -8,7 +8,8 @@ setxkbmap pl -option caps:super && killall xcape 2>/dev/null ; xcape -e 'Super_L
 xmodmap -e 'keycode 135 = Super_R' & # properties button extra Mod/Escape
 xset r rate 300 50 & # Speed xrate up
 unclutter & # Remove mouse when idle
-xcompmgr & # xcompmgr for transparency
+# xcompmgr & # xcompmgr for transparency
+picom -b --experimental-backends & # xcompmgr for transparency
 dunst & # notifications
 # trayer --expand true --widthtype request --edge top --align right --margin 5 --SetPartialStrut false --height 18 --transparent true & # standalone tray
 nm-applet & # network support
@@ -24,8 +25,10 @@ xhost local:root
 
 xflux -l 51.1287859 -g 16.9915022 -k 3400
 
+exec bspwm
+
 # status bar
-while :; do
-    dwmbar &
-	ssh-agent dwm || break
-done
+# while :; do
+#     dwmbar &
+# 	ssh-agent dwm || break
+# done
