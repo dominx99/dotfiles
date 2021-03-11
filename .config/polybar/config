@@ -19,7 +19,7 @@
 [colors]
 cyan = #90E1C6
 green = #91B362
-dark = #0A0E14
+dark = #DD0A0E14
 
 transparent = #00000000
 
@@ -32,6 +32,7 @@ primary = ${colors.green}
 
 secondary = #e60053
 alert = #bd2c40
+warning = #FCD34D
 
 purple-darken-2 = #7B1FA2
 purple-darken-3 = #6A1B9A
@@ -41,12 +42,11 @@ teal-darken-2 = #00796B
 red-darken-2 = #DC2626
 
 [bar/base]
-;monitor = ${env:MONITOR:HDMI-1}
 height = 32
 offset-x = 0
 offset-y = 8
 radius = 15.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -57,17 +57,17 @@ line-color = #f00
 border-size = 0
 border-color = #00000000
 
-padding-left = 3
-padding-right = 3
+padding-left = 5
+padding-right = 5
 
 module-margin-left = 0
 module-margin-right = 0
 
 font-0 = Poppins:style=Regular:pixelsize=12;2
 font-1 = siji:pixelsize=15;1
-font-2 = FontAwesome5Free:pixelsize=12;1
-font-3 = FontAwesome5FreeSolid:pixelsize=12;1
-font-4 = FontAwesome5Brands:pixelsize=12;1
+font-2 = FontAwesome5Free:pixelsize=12;2
+font-3 = FontAwesome5FreeSolid:pixelsize=12;2
+font-4 = FontAwesome5Brands:pixelsize=12;2
 font-5 = unifont:fontformat=truetype:size=10:antialias=false;0
 font-6 = fixed:pixelsize=15;1
 
@@ -99,9 +99,9 @@ enable-ipc = true
 
 [bar/ws]
 inherit = bar/base
-width = 12.1%
+width = 12.8%
 
-offset-x = 8
+offset-x = 20
 line-size = 1
 
 modules-left = bspwm
@@ -110,9 +110,9 @@ scroll-down = bspwm-deskprev
 
 [bar/time]
 inherit = bar/base
-width = 20.4%
+width = 25%
 
-offset-x = 37.55%
+offset-x = 35.25%
 
 modules-left = pulseaudio backlight-acpi
 modules-center = date
@@ -120,8 +120,8 @@ modules-right = wlan
 
 [bar/tray]
 inherit = bar/base
-width = 11.5%
-offset-x = 88%
+width = 12%
+offset-x = 86.9%
 
 tray-position = right
 tray-padding = 2
@@ -179,7 +179,7 @@ label-occupied-foreground = ${colors.foreground-alt}
 label-occupied-padding = 1
 
 label-urgent = ""
-label-urgent-background = ${colors.alert}
+label-urgent-foreground = ${colors.alert}
 label-urgent-padding = 1
 
 label-empty = ""
@@ -285,7 +285,6 @@ interface = wlo1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-padding = 3
 
 label-connected = %essid%
 
@@ -337,38 +336,35 @@ label = %date%, %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume>
-; format-volume = <label-volume> <bar-volume>
-label-volume = "  %percentage%%"
-label-volume-foreground = ${root.foreground}
+use-ui-max = true
+interval = 10
+
+format-volume = <ramp-volume> <label-volume>
+
+ramp-volume-0 = " "
+ramp-volume-1 = " "
+ramp-volume-2 = " "
+ramp-volume-3 = " "
+ramp-volume-4 = " "
+ramp-volume-5 = " "
+
+label-volume = "%percentage%%"
+label-volume-foreground = ${colors.foreground}
 
 label-muted = 
-label-muted-padding = 17
-label-muted-foreground = ${colors.foreground}
+label-muted-padding = 4
+label-muted-foreground = ${colors.alert}
 
-; bar-volume-width = 7
-; bar-volume-foreground-0 = #55aa55
-; bar-volume-foreground-1 = #55aa55
-; bar-volume-foreground-2 = #55aa55
-; bar-volume-foreground-3 = #55aa55
-; bar-volume-foreground-4 = #55aa55
-; bar-volume-foreground-5 = #f5a70a
-; bar-volume-foreground-6 = #ff5555
-; bar-volume-gradient = false
-; bar-volume-indicator = 
-; bar-volume-indicator-font = 2
-; bar-volume-fill = 
-; bar-volume-fill-font = 2
-; bar-volume-empty = 
-; bar-volume-empty-font = 2
-; bar-volume-empty-foreground = ${colors.foreground-alt}
+click-right = pavucontrol
 
 [module/alsa]
 type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
 label-volume =   %percentage%%
-label-volume-foreground = ${root.foreground}
+label-volume-foreground-0 = ${colors.primary}
+label-volume-foreground-1 = ${colors.alert}
+label-volume-foreground-2 = ${colors.warning}
 
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = 
@@ -402,7 +398,7 @@ format-charging-padding = 2
 format-discharging = <animation-discharging> <label-discharging>
 
 format-full-prefix = "  "
-format-full-prefix-foreground = ${colors.foreground}
+format-full-prefix-foreground = ${colors.primary}
 format-full-foreground = ${colors.foreground}
 
 ramp-capacity-0 = " "
@@ -413,13 +409,13 @@ ramp-capacity-foreground = ${colors.foreground}
 animation-charging-0 = " "
 animation-charging-1 = " "
 animation-charging-2 = " "
-animation-charging-foreground = ${colors.foreground}
+animation-charging-foreground = ${colors.warning}
 animation-charging-framerate = 750
 
 animation-discharging-0 = " "
 animation-discharging-1 = " "
 animation-discharging-2 = " "
-animation-discharging-foreground = ${colors.foreground}
+animation-discharging-foreground = ${colors.alert}
 animation-discharging-framerate = 750
 
 [module/temperature]

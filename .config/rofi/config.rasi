@@ -1,0 +1,24 @@
+configuration {
+    font: "FiraCode 16";
+    bw: 0;
+    terminal: "alacritty";
+    line-margin: 0;
+    separator-style: "none";
+
+    color-normal: "#202020, #bbbbbb, #202020, #303030, #bbbbbb";
+    color-active: "#202020, #bbbbbb, #202020, #303030, #bbbbbb";
+    color-urgent: "#202020, #bbbbbb, #202020, #303030, #bbbbbb";
+    color-window: "#202020, #202020, #202020";
+
+    display-run: "Run";
+    display-drun: "Launch";
+    kb-row-down: "Down";
+    kb-row-tab: "";
+    kb-row-select: "Tab";
+
+    window-match-fields: "title,name,desktop";
+    monitor: "-4";
+    matching-negate-char: '\0';
+    run-command: "sh -c \"{cmd}\"";
+    max-history-size: 100;
+}

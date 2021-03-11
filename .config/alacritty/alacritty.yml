@@ -11,8 +11,8 @@ window:
     y: 0
 
   padding:
-    x: 0
-    y: 0
+    x: 5
+    y: 8
 
   dynamic_padding: false
 
@@ -30,6 +30,7 @@ window:
 scrolling:
   history: 2500
   multiplier: 3
+  faux_multiplier: 3
 
 font:
   normal:
@@ -48,7 +49,7 @@ font:
     family: FiraCode
     style: Bold Italic
 
-  size: 9.5
+  size: 8.0
 
   offset:
     x: 0
@@ -118,6 +119,9 @@ debug:
   persistent_logging: false
   log_level: Warn
   print_events: false
+
+shell:
+  program: /usr/bin/fish
 
 # Colors (Ayu Dark)
 colors:
