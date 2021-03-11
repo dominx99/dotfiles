@@ -15,6 +15,14 @@ call plug#begin('~/.vim-plugged')
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
+    Plug 'justinmk/vim-dirvish'
+    Plug 'kristijanhusak/vim-dirvish-git'
+    Plug 'fsharpasharp/vim-dirvinist'
+    Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-obsession'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'mattn/emmet-vim'
 
     " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Browser input nvim
 
@@ -24,12 +32,15 @@ call plug#begin('~/.vim-plugged')
 
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'PhilRunninger/nerdtree-visual-selection'
 
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
     Plug 'godlygeek/tabular'
     Plug 'Yggdroot/indentLine'
-    Plug 'itchyny/lightline.vim'
+    " Plug 'itchyny/lightline.vim'
     Plug 'ntpeters/vim-better-whitespace'
 	Plug 'tpope/vim-commentary'
     Plug 'daviesjamie/vim-base16-lightline'

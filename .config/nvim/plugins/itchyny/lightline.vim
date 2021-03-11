@@ -1,7 +1,7 @@
 let g:lightline = {
       \ 'colorscheme': 'base16',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
+      \   'left': [ [ 'mode', 'paste', 'ObsessionStatus' ],
       \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ],
       \    'right':[
           \     [ 'blame', 'gitbranch', 'filetype', 'fileencoding', 'lineinfo', 'percent' ]
@@ -9,8 +9,6 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
       \   'blame': 'LightlineGitBlame'
       \ },
       \ }

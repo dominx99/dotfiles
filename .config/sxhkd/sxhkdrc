@@ -117,14 +117,12 @@ Next
     nope
 super + Return
 	alacritty
-super + alt + a
-	st
 super + shift + Return
     alacritty-samedir
 super + shift + @space
-	dmenu_run
+    rofi -combi-modi window,drun,ssh -theme onedark -show run
 super + @space
-    rofi -combi-modi window,drun,ssh -theme onedark -show combi -display-combi ""
+    rofi -combi-modi window,drun,ssh -theme onedark -show drun
 super + Delete
 	bspc node -c
 Print

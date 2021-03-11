@@ -1129,8 +1129,7 @@ function! s:GetTagKind(tag)
 endfunction
 
 set colorcolumn=120
-" highlight ColorColumn ctermbg=236 guibg=#242930 ctermfg=236 guifg=#d70000
-" let &colorcolumn=join(range(120,999),',')
+highlight ColorColumn ctermbg=236 guibg=#242930 ctermfg=236 guifg=#d70000
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
