@@ -1,0 +1,3 @@
+#!/bin/sh
+
+java -jar "$HOME/games/minecraft/game/sk-launcher.jar"

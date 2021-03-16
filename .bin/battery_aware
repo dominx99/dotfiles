@@ -10,7 +10,7 @@ async function aware() {
   let title = "'Low battery " + capacity.trim(" ") + "%'"
   let body = "'Connect for charging'"
 
-  if (capacity < 15 && ! isCharging) {
+  if (capacity < 99 && ! isCharging) {
     await exec("notify-send " + title + " " + body)
   }
 }

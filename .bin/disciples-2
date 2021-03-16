@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sudo wine /home/domin/games/Disciples\ 2/Discipl2.exe
