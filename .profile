@@ -5,7 +5,7 @@ export PATH="$PATH:$(du "$HOME/.bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):$
 export NEOVIM_DIR="/opt/nvim"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="chromium"
+export BROWSER="brave"
 export READER="zathura"
 export FILE="vifm"
 export SUDO_ASKPASS="$HOME/.bin/dmenupass"
@@ -30,8 +30,10 @@ export GOPATH="/go"
 export WINEPREFIX="$HOME/.wine"
 export WINEARCH="win64"
 
-echo "$0" | grep "zsh$" >/dev/null && [ -f ~/.zshrc ] && source "$HOME/.zshrc"
+echo "$0" | grep "fish$" >/dev/null && [ -f ~/.fishrc ] && source "$HOME/.fishrc"
 
 # Start graphical server if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx
 
+# Uruchamianie MPD (jeżeli nie został już uruchomiony)
+[ ! -s ~/.mpd/pid ] && mpd

@@ -1,0 +1,84 @@
+{
+  "TemplateController": {
+    "prefix": ["TemplateController"],
+    "body": [
+      "export default class TemplateController {",
+      "  default(component) {",
+      "    return (",
+      "      ${0:<div></div>}",
+      "    )",
+      "  }",
+      "}"
+    ],
+    "description": "Template Controller definition"
+  },
+  "Component": {
+    "prefix": ["Component"],
+    "body": [
+      "import TemplateController from './template-controller'",
+      "",
+      "export default class $1 extends React.Component {",
+      "  constructor(props) {",
+      "    super(props)",
+      "  }",
+      "",
+      "  render() {",
+      "    return (new TemplateController()).default(this)",
+      "  }",
+      "}"
+    ],
+    "description": "Component definition"
+  },
+  "Events": {
+    "prefix": ["Events"],
+    "body": [
+      "export default class Events {",
+      "  constructor(component) {",
+      "    this.component = component",
+      "  }",
+      "",
+      "  $0",
+      "}"
+    ],
+    "description": "Events definition"
+  },
+  "Mutations": {
+    "prefix": ["Mutations"],
+    "body": [
+      "export default class Mutations {",
+      "  constructor(component) {",
+      "    this.component = component",
+      "  }",
+      "",
+      "  $0",
+      "}"
+    ],
+    "description": "Mutations definition"
+  },
+  "Requests": {
+    "prefix": ["Requests"],
+    "body": [
+      "export default class Requests {",
+      "  constructor(component) {",
+      "    this.component = component",
+      "  }",
+      "",
+      "  $0",
+      "}"
+    ],
+    "description": "Requests definition"
+  },
+  "Getters": {
+    "prefix": ["Getters"],
+    "body": [
+      "export default class Getters {",
+      "  constructor(component) {",
+      "    this.component = component",
+      "  }",
+      "",
+      "  $0",
+      "}"
+    ],
+    "description": "Getters definition"
+  }
+}

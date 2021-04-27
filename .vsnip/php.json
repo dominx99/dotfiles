@@ -31,13 +31,28 @@
     ],
     "description": "Final Class without interface definition template."
   },
+  "interface": {
+    "prefix": ["interface"],
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types = 1);",
+      "",
+      "namespace ${VIM:BuildPhpNamespace()};",
+      "",
+      "interface ${VIM:expand('%:t:r')}",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Interface"
+  },
   "construct": {
     "prefix": ["construct"],
     "body": [
       "public function __construct (",
       "\t$1",
-      ")",
-      "{}"
+      ") {}"
     ],
     "description": "Construct definition template."
   },
@@ -67,5 +82,12 @@
       "namespace ${VIM:BuildPhpNamespace()};"
     ],
     "description": "Namespace template."
+  },
+  "className": {
+    "prefix": ["className"],
+    "body": [
+      "${VIM:expand('%:t:r')}"
+    ],
+    "description": "Class name template."
   }
 }

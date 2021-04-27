@@ -70,7 +70,7 @@ bell:
   duration: 0
   color: '#ffffff'
 
-background_opacity: 0.95
+background_opacity: 0.9
 
 cursor:
   style:

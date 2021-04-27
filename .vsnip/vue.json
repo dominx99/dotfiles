@@ -1,0 +1,34 @@
+{
+  "template": {
+    "prefix": ["template"],
+    "body": [
+      "<template>",
+      "$0",
+      "</template>"
+    ],
+    "description": "Template"
+  },
+  "script": {
+    "prefix": ["script"],
+    "body": [
+      "<script>",
+      "export default {",
+      "\tdata: () => ({",
+      "\t\t$0",
+      "\t})",
+      "}",
+      "</script>"
+    ],
+    "description": "Script"
+  },
+  "style": {
+    "prefix": ["style"],
+    "body": [
+      "<style scoped lang=\"scss\">",
+      "$0",
+      "</style>"
+    ],
+    "description": "style"
+  }
+}
+
