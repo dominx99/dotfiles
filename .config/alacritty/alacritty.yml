@@ -11,8 +11,8 @@ window:
     y: 0
 
   padding:
-    x: 5
-    y: 8
+    x: 10
+    y: 16
 
   dynamic_padding: false
 
@@ -53,7 +53,7 @@ font:
 
   offset:
     x: 0
-    y: 16
+    y: 13
 
   glyph_offset:
     x: 0

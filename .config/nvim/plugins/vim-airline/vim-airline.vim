@@ -1,4 +1,4 @@
-let g:airline_theme='ayu_dark'
+let g:airline_theme='deus'
 
 function! AirlineInit()
     let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])

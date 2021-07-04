@@ -17,39 +17,41 @@
 ;==========================================================
 
 [colors]
-cyan = #90E1C6
-green = #91B362
-dark = #DD0A0E14
+dark = #0A0E14
+light = #dfdfdf
 
+black = #000
+white = #fff
 transparent = #00000000
 
-foreground = #dfdfdf
-foreground-alt = #555
-foreground-dark = #000
+yellow = #FCD34D
+green = #6EE7B7
+cyan = #90E1C6
+indigo = #A5B4FC
+purple = #C4B5FD
+red = #F87171
+blue = #93C5FD
+
+foreground = ${colors.light}
+foreground-alt = #888
+foreground-dark = ${colors.dark}
 
 background = ${colors.dark}
 primary = ${colors.green}
 
 secondary = #e60053
-alert = #bd2c40
-warning = #FCD34D
-
-purple-darken-2 = #7B1FA2
-purple-darken-3 = #6A1B9A
-
-teal-darken-2 = #00796B
-
-red-darken-2 = #DC2626
+alert = ${colors.red}
+warning = ${colors.yellow}
 
 [bar/base]
-height = 32
+height = 30
 offset-x = 0
-offset-y = 8
+offset-y = 0
 radius = 15.0
 fixed-center = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${colors.transparent}
+foreground = ${colors.white}
 
 line-size = 3
 line-color = #f00
@@ -57,7 +59,7 @@ line-color = #f00
 border-size = 0
 border-color = #00000000
 
-padding-left = 5
+padding-left = 1
 padding-right = 5
 
 module-margin-left = 0
@@ -78,35 +80,45 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
-; modules-left = bspwm
-; modules-left = bspwm i3
-; nodules-center = mpd
-; modules-right = filesystem backlight-acpi pulseaudio wlan eth battery date powermenu
-; modules-right = filesystem backlight-acpi alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+[bar/background]
+inherit = bar/base
+width = 100%
+background = ${colors.dark}
+radius = 0
+padding-left = 0
+padding-right = 0
 
-; tray-position = right
-; tray-padding = 2
-;tray-background = #0063ff
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+modules-left = dummy-text
+modules-center = dummy-text
 
 [bar/ws]
 inherit = bar/base
 width = 12.8%
 
-offset-x = 20
+offset-x = 15
 line-size = 1
 
 modules-left = bspwm
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
+
+[bar/info]
+inherit = bar/base
+width = 12%
+
+offset-x = 25%
+line-size = 1
+
+modules-left = pulseaudio backlight-acpi
+
+[bar/connection]
+inherit = bar/base
+
+width = 12%
+offset-x = 65%
+line-size = 1
+
+modules-left = wlan eth
 
 [bar/time]
 inherit = bar/base
@@ -114,9 +126,7 @@ width = 25%
 
 offset-x = 35.25%
 
-modules-left = pulseaudio backlight-acpi
 modules-center = date
-modules-right = wlan
 
 [bar/tray]
 inherit = bar/base
@@ -130,9 +140,39 @@ tray-detached = true
 
 modules-left = battery
 
+[bar/main]
+inherit = bar/base
+background = ${colors.dark}
+
+width = 100%
+line-size = 1
+radius = 0
+
+padding-left = 4
+padding-right = 35
+
+tray-position = right
+tray-padding = 2
+tray-offset-x = -10
+tray-detached = true
+
+modules-left = bspwm left-padding pulseaudio backlight-acpi memory
+modules-center = date
+modules-right = wlan eth right-padding battery
+
 [module/dummy-text]
 type = custom/text
 content = " "
+
+[module/left-padding]
+type = custom/text
+content = " "
+content-padding = 20
+
+[module/right-padding]
+type = custom/text
+content = " "
+content-padding = 35
 
 [module/xwindow]
 type = internal/xwindow
@@ -169,22 +209,38 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = ""
-label-focused-background = ${colors.background}
+; ws-icon-default = ""
+ws-icon-default = ""
+ws-icon-focused = ""
+ws-icon-occupied = ""
+ws-icon-0 = X;
+ws-icon-1 = I;
+ws-icon-2 = II;
+ws-icon-3 = III;
+ws-icon-4 =
+ws-icon-5 = V;
+ws-icon-6 =
+ws-icon-7 = VII;
+ws-icon-8 = VIII;
+ws-icon-9 = IX;
+
+label-monitor = %name%
+
+label-focused = %icon%
 label-focused-foreground = ${colors.primary}
-label-focused-padding = 1
+label-focused-padding = 2
 
 label-occupied = ""
-label-occupied-foreground = ${colors.foreground-alt}
-label-occupied-padding = 1
+label-occupied-foreground = ${colors.blue}
+label-occupied-padding = 2
 
-label-urgent = ""
+label-urgent = %icon%
 label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 1
+label-urgent-padding = 2
 
-label-empty = ""
+label-empty = ""
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 1
+label-empty-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
@@ -259,9 +315,21 @@ label-padding = 3
 ; bar-empty-foreground = ${colors.foreground-alt}
 
 [module/backlight-acpi]
-inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
+
+format = <ramp> <label>
+label = "%percentage%%"
+format-padding = 2
+
+ramp-0 = ""
+ramp-1 = ""
+ramp-2 = ""
+ramp-3 = ""
+ramp-4 = ""
+
+ramp-foreground = ${colors.purple}
+ramp-padding-right = 1
 
 [module/cpu]
 type = internal/cpu
@@ -274,17 +342,18 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-prefix = "  "
+format-padding = 2
+format-prefix-foreground = ${colors.blue}
 label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlo1
+interface = wlan0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
+format-connected-padding = 2
 
 label-connected = %essid%
 
@@ -299,18 +368,21 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground}
+ramp-signal-foreground = ${colors.indigo}
+ramp-signal-padding-right = 1
 
 [module/eth]
 type = internal/network
-interface = eno1
+interface = enp0s31f6
 interval = 3.0
 
-format-connected-background = #55aa55
-format-connected-padding = 8
-format-connected-prefix = "  "
-format-connected-prefix-foreground = ${colors.foreground}
-label-connected = %local_ip%
+format-connected-prefix = ""
+format-connected-padding = 2
+format-connected-prefix-foreground = ${colors.indigo}
+
+; label-connected = %local_ip%
+label-connected = "%local_ip%"
+label-connected-padding-left = 1
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -322,12 +394,14 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date = "%d %b"
+date = "%A %d %b"
 time = %H:%M
 ; time-alt = %H:%M:%S
 ; date-alt = "%d %b"
 
 format-prefix = " "
+format-prefix-foreground = ${colors.cyan}
+format-prefix-padding-right = 1
 
 label = %date%, %time%
 
@@ -340,6 +414,7 @@ use-ui-max = true
 interval = 10
 
 format-volume = <ramp-volume> <label-volume>
+format-volume-padding = 2
 
 ramp-volume-0 = " "
 ramp-volume-1 = " "
@@ -347,6 +422,8 @@ ramp-volume-2 = " "
 ramp-volume-3 = " "
 ramp-volume-4 = " "
 ramp-volume-5 = " "
+
+ramp-volume-foreground = ${colors.yellow}
 
 label-volume = "%percentage%%"
 label-volume-foreground = ${colors.foreground}
