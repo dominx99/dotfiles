@@ -29,8 +29,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
+  -- buf_set_keymap('n', '<M-e>', "<cmd> lua require('telescope.builtin').buffers()<CR>")
+  -- buf_set_keymap('n', "<leader>ff', '<cmd> lua require('telescope.builtin').find_files()<CR>")
+  -- buf_set_keymap('n', "<leader>fg', '<cmd> lua require('telescope.builtin').live_grep()<CR>")
+  -- buf_set_keymap('n', "<leader>fh', '<cmd> lua require('telescope.builtin').help_tags()<CR>")
+
   mapper('n', '<m-r>', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
   mapper('n', '<m-R>', "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -52,7 +58,31 @@ end
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "intelephense", "tsserver", "clangd" }
+local servers = { "intelephense", "tsserver", "clangd", "dartls"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
+
+-- nvim_lsp["groovyls"].setup {
+--   cmd = {'java', '-jar', '/home/domin/.tools/groovy-language-server/build/libs/groovy-language-server-all.jar'},
+--   on_attach = on_attach,
+-- }
+
+-- nvim_lsp["jdtls"].setup {
+--   on_attach = on_attach,
+--   cmd = {'jdtls'},
+--   init_options = {
+--     jvm_args = {},
+--     workspace = "/workspace"
+--   }
+-- }
+
+nvim_lsp["java_language_server"].setup {
+  on_attach = on_attach,
+  cmd = {'java-language-server'}
+}
+
+nvim_lsp["zeta_note"].setup {
+  on_attach = on_attach,
+  cmd = {'/home/domin/.cargo/bin/zeta-note'}
+}

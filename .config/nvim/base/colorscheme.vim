@@ -17,3 +17,7 @@ hi CursorColumn guibg=NONE ctermbg=NONE
 hi CursorLine guibg=NONE ctermbg=NONE
 hi ColorColumn guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
+
+hi NvimTreeFolderName guifg=#F5C06F
+hi NvimTreeEmptyFolderName guifg=#D4843E
+hi NvimTreeOpenedFolderName guifg=#F09F17

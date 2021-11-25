@@ -66,3 +66,10 @@ inoremap <C-T> <Esc>:JumpToTag<Space>
 nnoremap <C-T> :JumpToTag<Space>
 
 map <M-F> :call SearchInProject()<CR>
+
+nnoremap <M-b> :NvimTreeToggle<CR>
+nnoremap <C-n> :NvimTreeToggle<CR>
+
+nnoremap <C-f> :FocusOnFile<CR>
+
+nnoremap yf gg^vG$y

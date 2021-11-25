@@ -13,6 +13,6 @@ command! CppSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/cpp.vim"
 command! JavascriptSettings silent! execute "vsp $HOME/.config/nvim/ftplugin/javascript.vim"
 command! ReloadNvim silent! execute "so $MYVIMRC" | echo "Nvim reloded"
 command! -nargs=1 JumpToTag call JumpToTag(<f-args>, ['f', 'function', 'c', 'class', 'i', 'interface', 't', 'trait', 'm'])
-command! FocusOnFile silent! NERDTreeFind
+command! FocusOnFile silent! NvimTreeFindFile
 command! DeleteCurrentFile call delete(expand('%')) | bdelete!
 command! SudoSave :execute 'silent w !sudo tee % > /dev/null' | :edit!

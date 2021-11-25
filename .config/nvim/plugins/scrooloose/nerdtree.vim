@@ -17,7 +17,6 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinSize=60
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | w | endif
 
-map <M-b> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let g:NERDTreeWinPos = "right"

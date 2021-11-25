@@ -5,6 +5,15 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim-plugged')
+    " Plug 'mfussenegger/nvim-jdtls'
+
+    Plug 'wakatime/vim-wakatime'
+
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'kyazdani42/nvim-tree.lua'
+
     Plug 'neovim/nvim-lspconfig',
     Plug 'hrsh7th/nvim-compe'
    " Plug 'nvim-lua/completion-nvim' " Propably slower than hrsh7th/nvim-compe
@@ -13,28 +22,33 @@ call plug#begin('~/.vim-plugged')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'sharkdp/fd'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
-    Plug 'justinmk/vim-dirvish'
-    Plug 'kristijanhusak/vim-dirvish-git'
+
+    " Path explorer, already using NERDTree
+    " Plug 'justinmk/vim-dirvish'
+    " Plug 'kristijanhusak/vim-dirvish-git'
+
     Plug 'fsharpasharp/vim-dirvinist'
     Plug 'tpope/vim-eunuch'
     Plug 'tpope/vim-obsession'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'mattn/emmet-vim'
+    Plug 'adoy/vim-php-refactoring-toolbox'
 
     " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Browser input nvim
 
-    " Old plugins
+    " Old 
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 
-    Plug 'scrooloose/nerdtree'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    Plug 'PhilRunninger/nerdtree-visual-selection'
+    " Plug 'scrooloose/nerdtree'
+    " Plug 'Xuyuanp/nerdtree-git-plugin'
+    " Plug 'ryanoasis/vim-devicons'
+    " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    " Plug 'PhilRunninger/nerdtree-visual-selection'
 
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
@@ -46,6 +60,7 @@ call plug#begin('~/.vim-plugged')
     Plug 'daviesjamie/vim-base16-lightline'
     Plug 'nelsyeung/twig.vim'
     Plug 'rafi/awesome-vim-colorschemes'
+
 call plug#end()
 
 function! PlugLoaded(name)
