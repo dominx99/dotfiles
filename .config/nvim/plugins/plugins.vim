@@ -7,6 +7,8 @@ endif
 call plug#begin('~/.vim-plugged')
     " Plug 'mfussenegger/nvim-jdtls'
 
+    Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
+
     Plug 'wakatime/vim-wakatime'
 
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }

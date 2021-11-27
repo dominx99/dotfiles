@@ -44,4 +44,3 @@ vim.api.nvim_exec([[
     " Used for the prompt prefix
     highlight TelescopePromptPrefix   guifg=red
 ]], false)
-

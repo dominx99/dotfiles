@@ -6,3 +6,4 @@ source $HOME/.config/nvim/plugins/junegunn/fzf.vim
 source $HOME/.config/nvim/plugins/natebosch/vim-lsc.vim
 " source $HOME/.config/nvim/plugins/nvim-treesitter/completion-treesitter.vim
 source $HOME/.config/nvim/plugins/vim-airline/vim-airline.vim
+source $HOME/.config/nvim/plugins/phpactor.vim
