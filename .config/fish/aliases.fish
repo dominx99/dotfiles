@@ -11,3 +11,6 @@ alias rm='echo "This is not the command you are looking for."; false'
 alias ia='comm -23 <(pacman -Qqett | sort) <(pacman -Qqg base -g base-devel | sort | uniq)'
 alias t='trash'
 alias rofi_dmenu='rofi -dmenu'
+alias ssh="TERM=xterm-256color ssh"
+alias ssh="TERM=xterm-256color /usr/bin/ssh"
+alias sshpass="TERM=xterm-256color /usr/bin/sshpass"

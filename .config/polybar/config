@@ -67,9 +67,9 @@ module-margin-right = 0
 
 font-0 = Poppins:style=Regular:pixelsize=12;2
 font-1 = siji:pixelsize=15;1
-font-2 = FontAwesome5Free:pixelsize=12;2
-font-3 = FontAwesome5FreeSolid:pixelsize=12;2
-font-4 = FontAwesome5Brands:pixelsize=12;2
+font-2 = FontAwesome6Free:pixelsize=12;2
+font-3 = FontAwesome6FreeSolid:pixelsize=12;2
+font-4 = FontAwesome6Brands:pixelsize=12;2
 font-5 = unifont:fontformat=truetype:size=10:antialias=false;0
 font-6 = fixed:pixelsize=15;1
 
@@ -143,6 +143,28 @@ modules-left = battery
 [bar/main]
 inherit = bar/base
 background = ${colors.dark}
+monitor = eDP-1
+
+width = 100%
+line-size = 1
+radius = 0
+
+padding-left = 4
+padding-right = 35
+
+tray-position = right
+tray-padding = 2
+tray-offset-x = -10
+tray-detached = true
+
+modules-left = bspwm left-padding pulseaudio backlight-acpi memory
+modules-center = date
+modules-right = wlan eth right-padding battery
+
+[bar/secondary]
+inherit = bar/base
+background = ${colors.dark}
+monitor = DP-2
 
 width = 100%
 line-size = 1

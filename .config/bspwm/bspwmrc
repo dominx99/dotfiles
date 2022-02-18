@@ -2,7 +2,9 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+if [ -x $HOME/.bin/bspwm-define-monitor ];then
+    $HOME/.bin/bspwm-define-monitor
+fi
 
 bspc config border_width        0
 bspc config normal_border_color  "#0A0E14"
@@ -25,6 +27,8 @@ bspc config paddingless_monocle true
 bspc config click_to_focus true
 bspc config focus_follows_pointer true
 
+bspc config pointer_follows_monitor true
+
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Firefox desktop='^1'
 bspc rule -a Slack desktop='^5'
@@ -35,3 +39,5 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 $HOME/.config/polybar/launch.sh
+
+setbg &

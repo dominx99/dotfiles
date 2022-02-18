@@ -17,15 +17,14 @@ configuration {
   separator-color: @window-bordercolor;
 }
 
-
 window {
   background-color: @background-color;
   transparency: "real";
-  height: 53%;
+  height: 64%;
   width: 40%;
-  border-color: @window-bordercolor;
-  border: 2 ;
-  border-radius: 5px;
+  border-color: #e4f24b;
+  border: 2;
+  border-radius: 8px;
   /* margin: 30px 10px 10px 10px; */
 }
 
@@ -38,11 +37,13 @@ inputbar {
   background-color: transparent;
   padding: 5px 10px 25px 10px;
 }
+
 prompt {
   background-color: transparent;
   text-color: #FFFFFF;
   padding: 0px 10px 0px 0px;
 }
+
 entry {
   background-color: transparent;
   text-color: #FFFFFF;
@@ -57,24 +58,28 @@ listview {
 
 element {
   background-color: transparent;
-  padding: 5px 2px 5px 2px;
+  padding: 3px 7px;
+  margin: 0 0 4px 0;
 }
 
 element-icon {
   size: 35px;
   border: 0px;
+  background-color: transparent;
 }
 
 element-text {
   expand: true;
   vertical-align: 0.5;
+  background-color: transparent;
+}
+
+element-text selected {
+  text-color: Black;
 }
 
 element selected {
-  border-radius: 2px;
-  background-color: #9FBBF3;
+  border-radius: 8px;
+  background-color: #e4f24b;
   color: @background-color;
 }
-
-/* vim: ft=css
-@theme "$HOME/.config/rofi/theme.rasi"

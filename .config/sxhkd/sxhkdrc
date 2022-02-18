@@ -120,9 +120,9 @@ super + Return
 super + shift + Return
     alacritty-samedir
 super + shift + @space
-    rofi -combi-modi window,drun,ssh -theme onedark -show run
+    rofi -combi-modi window,drun,ssh -theme ayu -show run
 super + @space
-    rofi -combi-modi window,drun,ssh -theme onedark -show drun
+    rofi -combi-modi window,drun,ssh -theme ayu -show drun
 super + Delete
 	bspc node -c
 Print
@@ -174,9 +174,3 @@ XF86TaskPane
 	$TERMINAL -e htop
 super + {F9,F10}
 	{dmenumount,dmenuumount}
-super + alt + b
-    setbg ~/photos/backgrounds/general/8.jpg
-super + alt + s
-    setbg ~/photos/backgrounds/sandra/3.jpg
-super + alt + t
-    tuxi "$(echo "" | rofi -dmenu -theme onedark -p "ask tuxi")" | espeak -s 180

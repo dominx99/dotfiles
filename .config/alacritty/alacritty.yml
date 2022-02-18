@@ -70,7 +70,7 @@ bell:
   duration: 0
   color: '#ffffff'
 
-background_opacity: 0.9
+background_opacity: 0.95
 
 cursor:
   style:
@@ -133,7 +133,7 @@ colors:
   # Normal colors
   normal:
     black:   '0x01060E'
-    red:     '0xEA6C73'
+    red:     '0xbf363d'
     green:   '0x91B362'
     yellow:  '0xF9AF4F'
     blue:    '0x53BDFA'
