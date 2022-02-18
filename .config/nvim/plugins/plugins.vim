@@ -5,6 +5,9 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim-plugged')
+    " View images in neovim
+    Plug 'edluffy/hologram.nvim'
+
     " Plug 'mfussenegger/nvim-jdtls'
 
     Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
@@ -42,7 +45,7 @@ call plug#begin('~/.vim-plugged')
 
     " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Browser input nvim
 
-    " Old 
+    " Old
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 

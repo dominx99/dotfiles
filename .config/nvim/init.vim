@@ -23,12 +23,8 @@ source $HOME/.config/nvim/base/colorscheme.vim
 autocmd FileType php setlocal iskeyword-=$
 
 lua require('base/custom')
+lua require('base/mappings')
 lua require('ftplugin')
-
-let g:vim_php_refactoring_auto_validate_sg = 1
-let g:vim_php_refactoring_auto_validate_g = 1
-
-let g:nvim_tree_quit_on_open = 1
 
 lua << EOF
 vim.lsp.set_log_level("debug")

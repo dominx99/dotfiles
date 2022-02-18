@@ -24,12 +24,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   mapper('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
   -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   mapper('n', '<space>d', "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<CR>")
   mapper('n', '<space>wd', "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>")
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
   -- buf_set_keymap('n', '<M-e>', "<cmd> lua require('telescope.builtin').buffers()<CR>")
   -- buf_set_keymap('n', "<leader>ff', '<cmd> lua require('telescope.builtin').find_files()<CR>")
@@ -62,6 +60,7 @@ end
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = { "intelephense", "tsserver", "clangd", "dartls"}
+
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
@@ -92,4 +91,12 @@ nvim_lsp["java_language_server"].setup {
 nvim_lsp["zeta_note"].setup {
   on_attach = on_attach,
   cmd = {'/home/domin/.cargo/bin/zeta-note'}
+}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.html.setup {
+  capabilities = capabilities,
+  on_attach = on_attach
 }

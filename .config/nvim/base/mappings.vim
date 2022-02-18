@@ -10,6 +10,8 @@ inoremap <M-w> <Esc>:bd<CR>
 nnoremap <M-w> :bd<CR>
 inoremap <M-s> <Esc>:w<CR>
 nnoremap <M-s> :w<CR>
+inoremap <M-q> <Esc>:wq<CR>
+nnoremap <M-q> :wq<CR>
 map <silent> <expr> <M-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 map <M-o> :GFiles<CR>
 nmap <silent> <Space><Space> :noh<CR>
@@ -33,6 +35,9 @@ map <C-l> <C-w>l
 " resize
 map <silent> <M-=> :vertical resize +5<CR>
 map <silent> <M--> :vertical resize -5<CR>
+
+nnoremap <silent> <M-+> :resize +3<CR>
+nnoremap <silent> <M-_> :resize -3<CR>
 
 " Replace all is aliased to S.
 nnoremap S :%s//g<Left><Left>
@@ -66,6 +71,7 @@ inoremap <C-T> <Esc>:JumpToTag<Space>
 nnoremap <C-T> :JumpToTag<Space>
 
 map <M-F> :call SearchInProject()<CR>
+map <M-f> :Ag<CR>
 
 nnoremap <M-b> :NvimTreeToggle<CR>
 nnoremap <C-n> :NvimTreeToggle<CR>
@@ -73,3 +79,6 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <C-f> :FocusOnFile<CR>
 
 nnoremap yf gg^vG$y
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv

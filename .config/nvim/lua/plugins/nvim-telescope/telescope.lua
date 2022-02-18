@@ -12,9 +12,12 @@ require('telescope').setup{
           '--no-ignore',
           '--glob="!tags"',
         },
-        winblend = 1,
-        border = {},
-        borderchars = { '', '', '', '', '', '', '', ''},
+        -- border = {},
+        -- borderchars = { '', '', '', '', '', '', '', ''},
+        layout_config = {
+            width = 0.95,
+            height = 0.95,
+        }
     }
 }
 

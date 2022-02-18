@@ -31,9 +31,13 @@ function! JumpToTag(name, kinds)
 endfunction
 
 function! BuildPhpNamespace()
-    let txt = substitute(expand('%:r'), '\/', '\\', 'g')
-    let txt2 = substitute(txt ,'src', 'App', 'g')
-    let txt3 = substitute(txt2, '\\' . expand('%:t:r'), '', 'g')
+    let txt1 = substitute(expand('%:r'), '\/', '\\', 'g')
+    let txt2 = substitute(txt1 ,'^.*\(src\|tests\)', '\1', 'g')
+    let txt3 = substitute(txt2 ,'src', 'App', 'g')
+    let txt4 = substitute(txt3 ,'tests', 'App\\Tests', 'g')
+    let txt5 = substitute(txt4, '.*\zs\\' . expand('%:t:r'), '', 'g')
 
-    return txt3
+    return txt5
 endfunction
+
+command! BuildPhpNamespace call BuildPhpNamespace()
