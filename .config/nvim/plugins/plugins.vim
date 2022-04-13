@@ -5,12 +5,9 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim-plugged')
-    " View images in neovim
-    Plug 'edluffy/hologram.nvim'
-
-    " Plug 'mfussenegger/nvim-jdtls'
-
-    Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
+    " Plug 'vim-vdebug/vdebug' "Support for XDebug
+    Plug 'dense-analysis/ale' " Asynchronous Lint Engine
+    Plug 'SergioRibera/vim-screenshot', { 'do': 'npm install --prefix Renderizer' }
 
     Plug 'wakatime/vim-wakatime'
 
@@ -19,53 +16,46 @@ call plug#begin('~/.vim-plugged')
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
 
+    Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
+
     Plug 'neovim/nvim-lspconfig',
-    Plug 'hrsh7th/nvim-compe'
-   " Plug 'nvim-lua/completion-nvim' " Propably slower than hrsh7th/nvim-compe
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/completion-treesitter'
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'sharkdp/fd'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'petertriho/cmp-git'
+
+    Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
 
-    " Path explorer, already using NERDTree
-    " Plug 'justinmk/vim-dirvish'
-    " Plug 'kristijanhusak/vim-dirvish-git'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " Plug 'nvim-treesitter/completion-treesitter'
 
-    Plug 'fsharpasharp/vim-dirvinist'
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'sharkdp/fd'
+
     Plug 'tpope/vim-eunuch'
-    Plug 'tpope/vim-obsession'
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
+
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'mattn/emmet-vim'
-    Plug 'adoy/vim-php-refactoring-toolbox'
 
-    " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Browser input nvim
-
-    " Old
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 
-    " Plug 'scrooloose/nerdtree'
-    " Plug 'Xuyuanp/nerdtree-git-plugin'
-    " Plug 'ryanoasis/vim-devicons'
-    " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    " Plug 'PhilRunninger/nerdtree-visual-selection'
+    Plug 'lukas-reineke/indent-blankline.nvim'
 
-    Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'godlygeek/tabular'
-    Plug 'Yggdroot/indentLine'
-    " Plug 'itchyny/lightline.vim'
     Plug 'ntpeters/vim-better-whitespace'
-	Plug 'tpope/vim-commentary'
-    Plug 'daviesjamie/vim-base16-lightline'
+    Plug 'numToStr/Comment.nvim'
     Plug 'nelsyeung/twig.vim'
     Plug 'rafi/awesome-vim-colorschemes'
-
 call plug#end()
 
 function! PlugLoaded(name)

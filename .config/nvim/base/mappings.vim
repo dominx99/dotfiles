@@ -46,15 +46,13 @@ nnoremap S :%s//g<Left><Left>
 vnoremap <C-c> "+y
 map <C-p> "+P
 
-" Align arrays
-vnoremap <leader>a :Tabularize /=<CR>
-vnoremap <space>a :Tabularize /=><CR>
-
 " Replace \"\" or ''
 nnoremap q' viw<Esc>`>a'<Esc>`<i'<Esc>
 vnoremap q' <Esc>`>a'<Esc>`<i'<Esc>
 nnoremap q" viw<Esc>`>a"<Esc>`<i"<Esc>
 vnoremap q" <Esc>`>a"<Esc>`<i"<Esc>
+nnoremap q` viw<Esc>`>a`<Esc>`<i`<Esc>
+vnoremap q` <Esc>`>a`<Esc>`<i`<Esc>
 nnoremap qd vaW<esc>:call StripWrap()<cr>
 vnoremap qd <esc>:call StripWrap()<cr>
 
@@ -74,7 +72,6 @@ map <M-F> :call SearchInProject()<CR>
 map <M-f> :Ag<CR>
 
 nnoremap <M-b> :NvimTreeToggle<CR>
-nnoremap <C-n> :NvimTreeToggle<CR>
 
 nnoremap <C-f> :FocusOnFile<CR>
 
@@ -82,3 +79,5 @@ nnoremap yf gg^vG$y
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+nnoremap <leader>cw :ClearWhitespaces<CR>

@@ -57,31 +57,11 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
-local servers = { "intelephense", "tsserver", "clangd", "dartls"}
+local servers = {"tsserver", "clangd", "dartls", "vimls"}
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
-
--- nvim_lsp['phpactor'].setup{
---   on_attach = on_attach 
--- }
-
--- nvim_lsp["groovyls"].setup {
---   cmd = {'java', '-jar', '/home/domin/.tools/groovy-language-server/build/libs/groovy-language-server-all.jar'},
---   on_attach = on_attach,
--- }
-
--- nvim_lsp["jdtls"].setup {
---   on_attach = on_attach,
---   cmd = {'jdtls'},
---   init_options = {
---     jvm_args = {},
---     workspace = "/workspace"
---   }
--- }
 
 nvim_lsp["java_language_server"].setup {
   on_attach = on_attach,
@@ -96,7 +76,14 @@ nvim_lsp["zeta_note"].setup {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require'lspconfig'.html.setup {
+nvim_lsp.intelephense.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("composer.json")
+}
+
+nvim_lsp.html.setup {
   capabilities = capabilities,
   on_attach = on_attach
 }
+

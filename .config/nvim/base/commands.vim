@@ -16,3 +16,4 @@ command! -nargs=1 JumpToTag call JumpToTag(<f-args>, ['f', 'function', 'c', 'cla
 command! FocusOnFile silent! NvimTreeFindFile
 command! DeleteCurrentFile call delete(expand('%')) | bdelete!
 command! SudoSave :execute 'silent w !sudo tee % > /dev/null' | :edit!
+command! ClearWhitespaces :execute '%s/\s\+$//e'
