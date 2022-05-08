@@ -417,7 +417,7 @@ type = internal/date
 interval = 5
 
 date = "%A %d %b"
-time = %H:%M
+time = %H:%M:%S
 ; time-alt = %H:%M:%S
 ; date-alt = "%d %b"
 

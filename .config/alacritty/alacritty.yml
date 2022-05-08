@@ -70,7 +70,7 @@ bell:
   duration: 0
   color: '#ffffff'
 
-background_opacity: 0.95
+background_opacity: 0.98
 
 cursor:
   style:
@@ -101,18 +101,28 @@ mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
 
 key_bindings:
-    - { key: V,             mods: Alt,                        action: Paste            }
-    - { key: C,             mods: Alt,                        action: Copy             }
-    - { key: K,             mods: Alt,                        action: ScrollPageUp,    }
-    - { key: J,             mods: Alt,                        action: ScrollPageDown   }
-    - { key: J,             mods: Alt|Shift,                  action: DecreaseFontSize }
-    - { key: K,             mods: Alt|Shift,                  action: IncreaseFontSize }
-    - { key: Copy,                                            action: Copy             }
-    - { key: Paste,                                           action: Paste            }
-    - { key: L,             mods: Control,                    action: ClearLogNotice   }
-    - { key: L,             mods: Control, mode: ~Vi|~Search, chars: "\x0c"            }
-    - { key: Home,          mods: Shift,   mode: ~Alt,        action: ScrollToTop,     }
-    - { key: End,           mods: Shift,   mode: ~Alt,        action: ScrollToBottom   }
+  - { key: V, mods: Alt, action: Paste }
+  - { key: C, mods: Alt, action: Copy }
+  - { key: K, mods: Alt, action: ScrollPageUp }
+  - { key: J, mods: Alt, action: ScrollPageDown }
+  - { key: J, mods: Alt|Shift, action: DecreaseFontSize }
+  - { key: K, mods: Alt|Shift, action: IncreaseFontSize }
+  - { key: Copy, action: Copy }
+  - { key: Paste, action: Paste }
+  - { key: L, mods: Control, action: ClearLogNotice }
+  - { key: L, mods: Control, mode: ~Vi|~Search, chars: "\f" }
+  - {
+      key: Home,
+      mods: Shift,
+      mode: ~Alt,
+      action: ScrollToTop
+    }
+  - {
+      key: End,
+      mods: Shift,
+      mode: ~Alt,
+      action: ScrollToBottom
+    }
 
 debug:
   render_timer: false
@@ -123,31 +133,32 @@ debug:
 shell:
   program: /usr/bin/fish
 
-# Colors (Ayu Dark)
 colors:
   # Default colors
   primary:
-    background: '0x0A0E14'
-    foreground: '0xB3B1AD'
+    background: '#0A0E14'
+    foreground: '#B3B1AD'
 
   # Normal colors
   normal:
-    black:   '0x01060E'
-    red:     '0xbf363d'
-    green:   '0x91B362'
-    yellow:  '0xF9AF4F'
-    blue:    '0x53BDFA'
-    magenta: '0xFAE994'
-    cyan:    '0x90E1C6'
-    white:   '0xC7C7C7'
+    black: '#01060E'
+    red: '#EA6C73'
+    green: '#91B362'
+    yellow: '#F9AF4F'
+    blue: '#53BDFA'
+    magenta: '#FAE994'
+    cyan: '#90E1C6'
+    white: '#C7C7C7'
 
   # Bright colors
   bright:
-    black:   '0x686868'
-    red:     '0xF07178'
-    green:   '0xC2D94C'
-    yellow:  '0xFFB454'
-    blue:    '0x59C2FF'
-    magenta: '0xFFEE99'
-    cyan:    '0x95E6CB'
-    white:   '0xFFFFFF'
+    black: '#686868'
+    red: '#F07178'
+    green: '#C2D94C'
+    yellow: '#FFB454'
+    blue: '#59C2FF'
+    magenta: '#FFEE99'
+    cyan: '#95E6CB'
+    white: '#FFFFFF'
+
+theme: Ayu-Dark
