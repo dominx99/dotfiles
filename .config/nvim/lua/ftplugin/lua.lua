@@ -1,3 +1,3 @@
-vim.o.sts=2
-vim.o.ts=2
-vim.o.sw=2
+vim.o.sts=4
+vim.o.ts=4
+vim.o.sw=4

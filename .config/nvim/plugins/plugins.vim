@@ -5,6 +5,8 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim-plugged')
+    Plug 'rmehri01/onenord.nvim'
+
     " Plug 'vim-vdebug/vdebug' "Support for XDebug
     Plug 'dense-analysis/ale' " Asynchronous Lint Engine
     Plug 'SergioRibera/vim-screenshot', { 'do': 'npm install --prefix Renderizer' }
@@ -19,16 +21,20 @@ call plug#begin('~/.vim-plugged')
     Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
 
     Plug 'neovim/nvim-lspconfig',
+
+    Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'petertriho/cmp-git'
-
+    Plug 'hrsh7th/cmp-nvim-lua'
+    Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
+    Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+
+    Plug 'petertriho/cmp-git'
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     " Plug 'nvim-treesitter/completion-treesitter'
