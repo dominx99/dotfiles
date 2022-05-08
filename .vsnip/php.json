@@ -4,7 +4,7 @@
     "body": [
       "<?php",
       "",
-      "declare(strict_types = 1);",
+      "declare(strict_types=1);",
       "",
       "namespace ${VIM:BuildPhpNamespace()};",
       "",
@@ -20,7 +20,7 @@
     "body": [
       "<?php",
       "",
-      "declare(strict_types = 1);",
+      "declare(strict_types=1);",
       "",
       "namespace ${VIM:BuildPhpNamespace()};",
       "",
@@ -36,7 +36,7 @@
     "body": [
       "<?php",
       "",
-      "declare(strict_types = 1);",
+      "declare(strict_types=1);",
       "",
       "namespace ${VIM:BuildPhpNamespace()};",
       "",
@@ -55,6 +55,26 @@
       ") {}"
     ],
     "description": "Construct definition template."
+  },
+  "static": {
+    "prefix": ["static"],
+    "body": [
+      "public static function $1($2): $3",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Public static method definition template."
+  },
+  "invoke": {
+    "prefix": ["invoke"],
+    "body": [
+      "public function __invoke(): $1",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Public invoke method definition template."
   },
   "public": {
     "prefix": ["public"],

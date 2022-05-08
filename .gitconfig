@@ -12,7 +12,9 @@
 	process = git-lfs filter-process
 	required = true
 [merge]
-	; conflictstyle = diff3
+    tool = nvimdiff
+    guitool = diffmerge
+    conflictStyle = diff3
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     co = checkout
@@ -23,3 +25,5 @@
     prune-branches = !git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D
     preview = !bat $(git ls-files --others --exclude-standard)
     deletelast = reset --soft HEAD~
+[diff]
+	tool = nvimdiff

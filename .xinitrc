@@ -1,6 +1,5 @@
 #!/bin/sh
 
-setbg &		# Set the background
 sxhkd &		# Bind keys
 # Switch to US international with Caps as Mod/Escape
 #setxkbmap -option caps:super -variant altgr-intl && killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape' &
@@ -24,11 +23,6 @@ xhost local:root
 /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
 xflux -l 51.1287859 -g 16.9915022 -k 3400
+battery_aware & # aware about low battery < 20%
 
 exec bspwm
-
-# status bar
-# while :; do
-#     dwmbar &
-# 	ssh-agent dwm || break
-# done
