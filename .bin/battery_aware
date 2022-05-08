@@ -3,16 +3,28 @@
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 
+function main() {
+    aware();
+}
+
+function delay(t, v) {
+   return new Promise(function(resolve) {
+       setTimeout(resolve.bind(null, v), t)
+   });
+}
+
 async function aware() {
-  let capacity = await getCapacity();
-  let isCharging = await getIsCharging();
+    let capacity = await getCapacity();
+    let isCharging = await getIsCharging();
 
-  let title = "'Low battery " + capacity.trim(" ") + "%'"
-  let body = "'Connect for charging'"
+    let title = "'Low battery " + capacity.trim(" ") + "%'"
+    let body = "'Connect for charging'"
 
-  if (capacity < 99 && ! isCharging) {
-    await exec("notify-send " + title + " " + body)
-  }
+    if (capacity < 20 && ! isCharging) {
+        await exec("notify-send -u critical " + title + " " + body)
+    }
+
+    delay(30000).then(aware);
 }
 
 async function getCapacity() {
@@ -39,4 +51,4 @@ async function getIsCharging() {
   return stdout.trim(" ") === "Charging"
 }
 
-aware()
+main()

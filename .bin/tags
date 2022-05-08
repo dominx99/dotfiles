@@ -7,7 +7,7 @@ if [ -f "tags" ]; then
 fi
 
 echo "->  Creating tags file ..."
-ctags -R --fields=+aimlS --languages=php --php-kinds=cfit > /dev/null 2>&1
+ctags -R --exclude=var --fields=+aimlS --languages=php --php-kinds=cfit > /dev/null 2>&1
 echo "->  Tags file created."
 
 # vi: ft=sh
