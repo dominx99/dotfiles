@@ -1,3 +1,3 @@
-local theme = require "theme"
+local theme = require("themes.ayu")
 
-theme.init()
+theme.colorscheme()

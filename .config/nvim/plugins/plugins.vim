@@ -5,7 +5,7 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim-plugged')
-    Plug 'rmehri01/onenord.nvim'
+    Plug 'Shatur/neovim-ayu'
 
     " Plug 'vim-vdebug/vdebug' "Support for XDebug
     Plug 'dense-analysis/ale' " Asynchronous Lint Engine
@@ -61,7 +61,6 @@ call plug#begin('~/.vim-plugged')
     Plug 'ntpeters/vim-better-whitespace'
     Plug 'numToStr/Comment.nvim'
     Plug 'nelsyeung/twig.vim'
-    Plug 'rafi/awesome-vim-colorschemes'
 call plug#end()
 
 function! PlugLoaded(name)

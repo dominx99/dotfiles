@@ -18,11 +18,7 @@ lua require('plugins/nvim-treesitter/nvim-treesitter')
 lua require('plugins/nvim-telescope/telescope')
 lua require('plugins/nvim-tree')
 lua require('plugins/numToStr-Comment')
-lua require('theme')
 lua require('settings')
 lua require('base/mappings')
-
-" Deprecated for now
-" source $HOME/.config/nvim/base/colorscheme.vim
 
 let g:perl_host_prog = '/usr/bin/perl'
