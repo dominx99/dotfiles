@@ -1,0 +1,13 @@
+color info black green
+color listnormal_unread green black
+color listfocus black green
+color listfocus_unread black green
+
+unbind-key UP
+unbind-key j
+unbind-key k
+unbind-key x
+
+bind-key k up
+bind-key j down
+bind-key x delete-article
