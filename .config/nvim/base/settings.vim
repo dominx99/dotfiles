@@ -40,6 +40,7 @@ set winblend=3
 " delays and poor user experience.
 set updatetime=300
 set colorcolumn=
+" set shell=bash
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.

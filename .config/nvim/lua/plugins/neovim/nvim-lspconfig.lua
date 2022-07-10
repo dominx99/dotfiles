@@ -36,18 +36,19 @@ local on_attach = function(client, bufnr)
 
   mapper('n', '<m-r>', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
   mapper('n', '<m-R>', "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
-  mapper('n', '<space>ca', "<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>")
-  mapper('n', '<space>rca', "<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>")
+  mapper('n', '<space>ca', "<cmd>lua vim.lsp.buf.code_action()<CR>")
+  mapper('n', '<leader>ca', ":ALECodeAction<CR>")
+  -- mapper('n', '<space>rca', "<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>")
 
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
+  elseif client.server_capabilities.document_range_formatting then
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
 
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_exec([[
         hi LspDiagnosticsSignError guifg=Red
         hi LspDiagnosticsSignWarning guifg=Yellow
@@ -57,7 +58,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = {"tsserver", "clangd", "dartls", "vimls"}
+local servers = {"tsserver", "clangd", "dartls", "vimls", "intelephense", "html"}
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
@@ -68,24 +69,13 @@ nvim_lsp["java_language_server"].setup {
   cmd = {'java-language-server'}
 }
 
-nvim_lsp["zeta_note"].setup {
-  on_attach = on_attach,
-  cmd = {'/home/domin/.cargo/bin/zeta-note'}
-}
+-- nvim_lsp["zeta_note"].setup {
+--   on_attach = on_attach,
+--   cmd = {'/home/domin/.cargo/bin/zeta-note'}
+-- }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-nvim_lsp.intelephense.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-  root_dir = nvim_lsp.util.root_pattern("composer.json")
-}
-
-nvim_lsp.html.setup {
-  capabilities = capabilities,
-  on_attach = on_attach
-}
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")

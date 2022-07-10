@@ -18,7 +18,28 @@ require('telescope').setup{
             width = 0.95,
             height = 0.95,
         }
+    },
+    extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+        -- even more opts
+      }
+
+      -- pseudo code / specification for writing custom displays, like the one
+      -- for "codeactions"
+      -- specific_opts = {
+      --   [kind] = {
+      --     make_indexed = function(items) -> indexed_items, width,
+      --     make_displayer = function(widths) -> displayer
+      --     make_display = function(displayer) -> function(e)
+      --     make_ordinal = function(e) -> string
+      --   },
+      --   -- for example to disable the custom builtin "codeactions" display
+      --      do the following
+      --   codeactions = false,
+      -- }
     }
+  }
 }
 
 vim.api.nvim_exec([[
@@ -47,3 +68,5 @@ vim.api.nvim_exec([[
     " Used for the prompt prefix
     highlight TelescopePromptPrefix   guifg=red
 ]], false)
+
+require("telescope").load_extension("ui-select")

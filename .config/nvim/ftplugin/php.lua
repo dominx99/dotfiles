@@ -23,6 +23,7 @@ mapper('i', '<F6>', '<ESC> :PhpactorClassExpand<CR>')
 mapper('n', '<space>ga', ':call phpactor#GenerateAccessors()<CR>')
 mapper('n', '<space>t', ':call phpactor#Transform()<CR>')
 mapper('n', '<space>i', ':call phpactor#ImportMissingClasses()<CR>')
+mapper('n', '<space>mf', ':call phpactor#MoveFile()<CR>')
 
 vim.api.nvim_exec([[
     highlight ColorColumn ctermbg=236 guibg=#242930 ctermfg=236 guifg=#d70000

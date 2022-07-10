@@ -74,6 +74,7 @@ map <M-f> :Ag<CR>
 nnoremap <M-b> :NvimTreeToggle<CR>
 
 nnoremap <C-f> :FocusOnFile<CR>
+nnoremap <M-S> :SudoSave<CR>
 
 nnoremap yf gg^vG$y
 

@@ -5,6 +5,8 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim-plugged')
+    Plug 'francoiscabrol/ranger.vim'
+
     Plug 'Shatur/neovim-ayu'
 
     " Plug 'vim-vdebug/vdebug' "Support for XDebug
@@ -37,12 +39,12 @@ call plug#begin('~/.vim-plugged')
     Plug 'petertriho/cmp-git'
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    " Plug 'nvim-treesitter/completion-treesitter'
 
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
 
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-ui-select.nvim'
     Plug 'sharkdp/fd'
 
     Plug 'tpope/vim-eunuch'
