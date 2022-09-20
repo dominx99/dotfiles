@@ -22,3 +22,5 @@ lua require('base/mappings')
 lua require('plugins/neovim/nvim-lspconfig')
 
 let g:perl_host_prog = '/usr/bin/perl'
+let g:python3_host_prog = "/usr/bin/python"
+

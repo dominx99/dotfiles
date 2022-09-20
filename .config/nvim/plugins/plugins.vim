@@ -9,7 +9,7 @@ call plug#begin('~/.vim-plugged')
 
     Plug 'Shatur/neovim-ayu'
 
-    " Plug 'vim-vdebug/vdebug' "Support for XDebug
+    Plug 'vim-vdebug/vdebug' "Support for XDebug
     Plug 'dense-analysis/ale' " Asynchronous Lint Engine
     Plug 'SergioRibera/vim-screenshot', { 'do': 'npm install --prefix Renderizer' }
 
