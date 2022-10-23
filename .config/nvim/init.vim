@@ -1,6 +1,6 @@
 let mapleader = ","
 
-source $HOME/.config/nvim/plugins/plugins.vim
+lua require('plugins/init')
 
 source $HOME/.config/nvim/base/auto-commands.vim
 source $HOME/.config/nvim/base/commands.vim
@@ -23,4 +23,3 @@ lua require('plugins/neovim/nvim-lspconfig')
 
 let g:perl_host_prog = '/usr/bin/perl'
 let g:python3_host_prog = "/usr/bin/python"
-

@@ -41,11 +41,7 @@ local on_attach = function(client, bufnr)
   -- mapper('n', '<space>rca', "<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>")
 
   -- Set some keybinds conditional on server capabilities
-  if client.server_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.server_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.document_highlight then
@@ -58,8 +54,8 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = {"tsserver", "clangd", "dartls", "vimls", "html", "intelephense", "phpactor"}
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local servers = {"tsserver", "clangd", "dartls", "vimls", "html", "intelephense", "phpactor", "terraformls"}
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
