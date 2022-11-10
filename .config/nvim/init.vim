@@ -18,8 +18,9 @@ lua require('plugins/nvim-telescope/telescope')
 lua require('plugins/nvim-tree')
 lua require('plugins/numToStr-Comment')
 lua require('settings')
+lua require('plugins/mason-lspconfig')
+lua require('plugins/null-ls')
 lua require('base/mappings')
-lua require('plugins/neovim/nvim-lspconfig')
 
 let g:perl_host_prog = '/usr/bin/perl'
 let g:python3_host_prog = "/usr/bin/python"

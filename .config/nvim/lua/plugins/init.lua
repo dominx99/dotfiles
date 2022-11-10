@@ -30,6 +30,8 @@ return require('packer').startup(function(use)
   use 'dense-analysis/ale'
   use {'vim-vdebug/vdebug', branch = 'master' }
 
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'williamboman/mason.nvim'
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -43,9 +45,25 @@ return require('packer').startup(function(use)
   use 'hrsh7th/vim-vsnip-integ'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
   use 'petertriho/cmp-git'
+  use 'github/copilot.vim'
 
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  }
+
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {}
+    end
+  }
+
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
   }
 end)

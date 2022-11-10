@@ -1,3 +1,18 @@
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "sumneko_lua",
+    "rust_analyzer",
+    "tsserver",
+    "clangd",
+    "vimls",
+    "html",
+    "intelephense",
+    "phpactor",
+    "terraformls",
+  }
+})
+
 local nvim_lsp = require('lspconfig')
 
 local mapper = function(mode, key, result)
@@ -10,40 +25,29 @@ local on_attach = function(client, bufnr)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  mapper('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
   mapper('n', 'gd', "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>")
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  mapper('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
   mapper('n', 'gi', "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>")
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  mapper('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  mapper('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+  mapper('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
+  mapper('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+  mapper('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  mapper('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
   mapper('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
-  -- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  mapper('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
   mapper('n', '<space>d', "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<CR>")
   mapper('n', '<space>wd', "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>")
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
-  -- buf_set_keymap('n', '<M-e>', "<cmd> lua require('telescope.builtin').buffers()<CR>")
-  -- buf_set_keymap('n', "<leader>ff', '<cmd> lua require('telescope.builtin').find_files()<CR>")
-  -- buf_set_keymap('n', "<leader>fg', '<cmd> lua require('telescope.builtin').live_grep()<CR>")
-  -- buf_set_keymap('n', "<leader>fh', '<cmd> lua require('telescope.builtin').help_tags()<CR>")
-
+  -- mapper('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>') # replaced with trouble
   mapper('n', '<m-r>', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
   mapper('n', '<m-R>', "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
   mapper('n', '<space>ca', "<cmd>lua vim.lsp.buf.code_action()<CR>")
+  mapper("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>")
+
   mapper('n', '<leader>ca', ":ALECodeAction<CR>")
-  -- mapper('n', '<space>rca', "<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>")
+  mapper('n', '<space>q', ':Trouble<CR>')
 
-  -- Set some keybinds conditional on server capabilities
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
-  -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.document_highlight then
     vim.api.nvim_exec([[
         hi LspDiagnosticsSignError guifg=Red
@@ -54,7 +58,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = {"tsserver", "clangd", "dartls", "vimls", "html", "intelephense", "phpactor", "terraformls"}
+local servers = {"tsserver", "clangd", "dartls", "vimls", "intelephense", "phpactor", "terraformls", "html"}
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 for _, lsp in ipairs(servers) do
@@ -69,12 +73,7 @@ nvim_lsp["java_language_server"].setup {
   cmd = {'java-language-server'}
 }
 
--- nvim_lsp["zeta_note"].setup {
---   on_attach = on_attach,
---   cmd = {'/home/domin/.cargo/bin/zeta-note'}
--- }
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local runtime_path = vim.split(package.path, ';')
