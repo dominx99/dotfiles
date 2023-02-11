@@ -88,3 +88,5 @@ source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias luamake=/home/domin/tmp/1/lua-language-server/3rd/luamake/luamake

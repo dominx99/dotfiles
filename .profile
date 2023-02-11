@@ -37,6 +37,7 @@ export PYTHONPATH="/usr/bin/python"
 export GOPATH="$HOME/go"
 export WINEPREFIX="$HOME/.wine"
 export WINEARCH="win64"
+export DOCKER_BUILDKIT=0
 
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 
@@ -44,3 +45,5 @@ echo "$0" | grep "fish$" >/dev/null && [ -f ~/.fishrc ] && source "$HOME/.fishrc
 
 # Start graphical server if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx
+
+CR_PAT="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"

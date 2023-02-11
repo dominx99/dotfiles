@@ -4,7 +4,6 @@ sxhkd &		# Bind keys
 # Switch to US international with Caps as Mod/Escape
 #setxkbmap -option caps:super -variant altgr-intl && killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape' &
 setxkbmap pl -option caps:super && killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape' &
-xmodmap -e 'keycode 135 = Super_R' & # properties button extra Mod/Escape
 xset r rate 300 50 & # Speed xrate up
 unclutter & # Remove mouse when idle
 # xcompmgr & # xcompmgr for transparency
@@ -24,5 +23,7 @@ xhost local:root
 
 xflux -l 51.1287859 -g 16.9915022 -k 3400
 battery_aware & # aware about low battery < 20%
+restart_bluetooth
+xmodmap ~/.Xmodmap & # properties button extra Mod/Escape
 
 exec bspwm

@@ -10,6 +10,7 @@
 .config/menus/
 .config/omf/
 .config/pulse/
+.config/ranger/
 .config/rclone/
 .config/htop/
 .config/filezilla/
@@ -48,6 +49,20 @@
 .config/newsboat/history.*
 .config/eog
 .config/Code - OSS
+.config/btop
+.config/pgcli
+.config/normcap
+.config/normcap
+.config/ksnip
+.config/fontforge
+.config/google-chrome
+.config/dunst/screenshot*.sh
+.config/dunst/variables.sh
+.config/configstore
+.config/github-copilot/
+.config/whatsapp-for-linux
+.config/yarn
+.config/zoom.conf
 
 .DS_Store
 Homestead.yml
