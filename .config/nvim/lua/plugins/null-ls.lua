@@ -5,6 +5,5 @@ null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.curlylint,
     null_ls.builtins.diagnostics.twigcs,
-    null_ls.builtins.formatting.prettierd,
   },
 })

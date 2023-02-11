@@ -18,3 +18,8 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Run xrdb whenever Xdefaults or Xresources are updated.
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+
+augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost lua/plugins/init.lua source <afile> | PackerCompile
+augroup end

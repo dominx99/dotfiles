@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-ui-select.nvim'
+  use 'nvim-telescope/telescope-dap.nvim'
   use 'sharkdp/fd'
   use 'tpope/vim-eunuch'
   use 'tpope/vim-fugitive'
@@ -28,7 +29,9 @@ return require('packer').startup(function(use)
   use {'junegunn/fzf.vim'}
   use {'phpactor/phpactor', ft = {'php'}, tag = '*', run = 'composer install --no-dev -o'}
   use 'dense-analysis/ale'
-  use {'vim-vdebug/vdebug', branch = 'master' }
+  use 'rcarriga/nvim-dap-ui'
+
+  use 'mfussenegger/nvim-dap'
 
   use 'williamboman/mason-lspconfig.nvim'
   use 'williamboman/mason.nvim'

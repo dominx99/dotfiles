@@ -37,11 +37,8 @@ local on_attach = function(client, bufnr)
   mapper('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
   mapper('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>")
   mapper('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
-  mapper('n', '<space>d', "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<CR>")
   mapper('n', '<space>wd', "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>")
-  -- mapper('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>') # replaced with trouble
-  mapper('n', '<m-r>', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
-  mapper('n', '<m-R>', "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
+  mapper('n', '<M-r>', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>")
   mapper('n', '<space>ca', "<cmd>lua vim.lsp.buf.code_action()<CR>")
   mapper("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>")
 

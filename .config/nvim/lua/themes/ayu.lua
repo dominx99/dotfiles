@@ -69,18 +69,18 @@ ayu.setup({
 
         VertSplit = { bg = _M.colors.bg },
 
-        TelescopePromptPrefix = { bg = _M.colors.dark1 },
-        TelescopePromptNormal = { bg = _M.colors.dark1 },
-        TelescopeResultsNormal = { bg = _M.colors.dark2 },
-        TelescopePreviewNormal = { bg = _M.colors.dark3 },
-
-        TelescopePromptBorder = { bg = _M.colors.dark1, fg = _M.colors.dark1 },
-        TelescopeResultsBorder = { bg = _M.colors.dark2, fg = _M.colors.dark2 },
-        TelescopePreviewBorder = { bg = _M.colors.dark3, fg = _M.colors.dark3 },
-
-        TelescopePromptTitle = { fg = _M.colors.grey14 },
-        TelescopeResultsTitle = { fg = _M.colors.grey15 },
-        TelescopePreviewTitle = { fg = _M.colors.grey16 },
+        -- TelescopePromptPrefix = { bg = _M.colors.dark1 },
+        -- TelescopePromptNormal = { bg = _M.colors.dark1 },
+        -- TelescopeResultsNormal = { bg = _M.colors.dark2 },
+        -- TelescopePreviewNormal = { bg = _M.colors.dark3 },
+        --
+        -- TelescopePromptBorder = { bg = _M.colors.dark1, fg = _M.colors.dark1 },
+        -- TelescopeResultsBorder = { bg = _M.colors.dark2, fg = _M.colors.dark2 },
+        -- TelescopePreviewBorder = { bg = _M.colors.dark3, fg = _M.colors.dark3 },
+        --
+        -- TelescopePromptTitle = { fg = _M.colors.grey14 },
+        -- TelescopeResultsTitle = { fg = _M.colors.grey15 },
+        -- TelescopePreviewTitle = { fg = _M.colors.grey16 },
 
         BufferCurrentTarget = { fg = _M.colors.special, bg = _M.colors.bg },
         BufferVisibleTarget = { fg = _M.colors.special, bg = _M.colors.bg },

@@ -10,12 +10,11 @@ inoremap <M-w> <Esc>:bd<CR>
 nnoremap <M-w> :bd<CR>
 inoremap <M-s> <Esc>:w<CR>
 nnoremap <M-s> :w<CR>
-inoremap <M-q> <Esc>:wq<CR>
-nnoremap <M-q> :wq<CR>
+inoremap <M-q> <Esc>:q<CR>
+nnoremap <M-q> :q<CR>
 map <silent> <expr> <M-P> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 map <M-o> :GFiles<CR>
 nmap <silent> <Space><Space> :noh<CR>
-map <M-e> :Buffers<CR>
 
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -63,10 +62,6 @@ endfunction
 nnoremap <leader>d "_d
 xnoremap <leader>d "_d
 xnoremap <leader>p "_dP
-
-nnoremap <C-]> <Esc>:JumpToTag <C-r>=expand("<cword>")<CR><CR>
-inoremap <C-T> <Esc>:JumpToTag<Space>
-nnoremap <C-T> :JumpToTag<Space>
 
 map <M-F> :call SearchInProject()<CR>
 map <M-f> :Ag<CR>
