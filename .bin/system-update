@@ -1,0 +1,3 @@
+!#/usr/bin/env bash
+sudo pacman -Sy archlinux-keyring && sudo pacman -Su
+yay

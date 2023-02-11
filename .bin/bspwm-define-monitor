@@ -1,16 +1,15 @@
 #!/bin/bash
 
-monitor='DP-2'
+monitor='DP2'
 my_laptop_external_monitor_resolution="2560x1440"
 my_laptop_external_monitor=$(xrandr -q | grep $monitor)
 
 if [[ $my_laptop_external_monitor != *disconnected* ]]; then
-    xrandr --output $monitor --mode $my_laptop_external_monitor_resolution --rotate normal --left-of eDP-1
-    xrandr --output eDP-1 --primary --mode 1920x1080 --rotate normal --right-of $monitor
+    xrandr --output $monitor --mode $my_laptop_external_monitor_resolution --rotate normal --right-of eDP1
+    xrandr --output eDP1 --primary --mode 1920x1080 --rotate normal --left-of $monitor
 
     bspc monitor $monitor -d IX X
-    bspc monitor eDP-1 -d I II III IV V VI VII VIII
-    bspc monitor eDP-1 -s $monitor
+    bspc monitor eDP1 -d I II III IV V VI VII VIII
 else
-    bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+    bspc monitor eDP1 -d I II III IV V VI VII VIII IX X
 fi
