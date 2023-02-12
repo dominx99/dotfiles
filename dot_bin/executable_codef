@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+fzf | xargs -r -I % $EDITOR % ;
+
+# vi ft:sh

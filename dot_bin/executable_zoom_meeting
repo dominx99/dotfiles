@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+{
+    xdotool keydown Alt && xdotool keydown 7 && sleep 1 && xdotool keyup Alt && xdotool keyup 7 && sleep 1
+    zoom &
+    sleep 4
+    xdotool mousemove 886 456 click 1 mousemove restore
+    disown
+} &> /dev/null
+
+# vi:ft=sh

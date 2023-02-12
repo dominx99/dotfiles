@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+    set -- "current"
+fi
+
+commands=("mycli -d $1" "pgcli -D $1")
+
+echo ""
+
+for i in "${commands[@]}"
+do
+    { # try
+        echo "> $i" && eval "$i" 2>/dev/null && exit 0
+    } || { # catch
+        continue
+    }
+
+done
+
+echo -e "\nNo results!"
+
+# vi ft:sh

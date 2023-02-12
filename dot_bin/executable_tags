@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -f "tags" ]; then
+    echo "->  Tags file exists. Deleting ..."
+    rm tags
+    echo "->  Tags file deleted."
+fi
+
+echo "->  Creating tags file ..."
+ctags -R --exclude=var --fields=+aimlS --languages=php --php-kinds=cfit > /dev/null 2>&1
+echo "->  Tags file created."
+
+# vi: ft=sh

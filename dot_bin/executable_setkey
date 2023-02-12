@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# check dir
+# ls .ssh/*.pub | awk '!/id_rsa/'
+
+if [ -z $1 ]
+then
+    action=$(printf "jendrusha\\ningenious" | dmenu -i -p "Select identity:")
+    set -- "$action"
+fi
+
+keys=( "id_rsa"  "id_rsa.pub" )
+ssh_path="$HOME/.ssh"
+
+[ -z $1 ] && echo "Missing required param" && exit 1
+echo "Loading identity for $1..."
+
+for i in "${keys[@]}"; do
+    file="${i/id_rsa/$1}"
+    if [ ! -f "$ssh_path/$file" ]; then
+        echo "Missing $file file. Please make sure file exists." && exit 1
+    fi
+    [ -f "$ssh_path/$i" ] && rm "$ssh_path/$i"
+    cp "$ssh_path/$file" "$ssh_path/$i" && echo "Copied $file -> $i."
+done
+
+# vi:ft=sh
