@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-xdg-open "$@"
-disown
-
-# vi ft:sh

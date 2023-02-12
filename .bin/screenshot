@@ -1,4 +1,0 @@
-#!/bin/bash
-
-maim -s /tmp/12345
-tesseract /tmp/12345 - -l eng | xclip -selection clipboard

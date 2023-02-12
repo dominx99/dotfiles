@@ -1,6 +1,0 @@
-#!/bin/bash
-
-mkdir ~/GoogleBackup
-cp -R ~/docs ~/GoogleBackup/
-rclone sync -i ~/GoogleBackup/ Google:home-sync
-trash ~/GoogleBackup

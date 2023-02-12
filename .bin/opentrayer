@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-if [ -n "$(pgrep trayer)" ]; then
-    killall trayer
-else
-    trayer --widthtype request --edge bottom --align center --height 100 --distancefrom bottom --distance 30
-fi
-
-# vi ft:sh
