@@ -39,7 +39,7 @@ export WINEPREFIX="$HOME/.wine"
 export WINEARCH="win64"
 export DOCKER_BUILDKIT=0
 
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
+# eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"
 
 echo "$0" | grep "fish$" >/dev/null && [ -f ~/.fishrc ] && source "$HOME/.fishrc"
 
