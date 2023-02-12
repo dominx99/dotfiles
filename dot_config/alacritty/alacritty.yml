@@ -2,6 +2,8 @@ env:
   TERM: alacritty
 
 window:
+  opacity: 0.98
+
   dimensions:
     columns: 80
     lines: 24
@@ -70,8 +72,6 @@ bell:
   duration: 0
   color: '#ffffff'
 
-background_opacity: 0.98
-
 cursor:
   style:
     shape: Block
@@ -90,12 +90,6 @@ mouse:
   triple_click: { threshold: 300 }
 
   hide_when_typing: false
-
-  url:
-    launcher:
-      program: xdg-open
-
-    modifiers: None
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
