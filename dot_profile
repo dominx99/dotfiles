@@ -45,5 +45,3 @@ echo "$0" | grep "fish$" >/dev/null && [ -f ~/.fishrc ] && source "$HOME/.fishrc
 
 # Start graphical server if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx
-
-CR_PAT="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"
