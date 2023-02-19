@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/domin/.local/share/nvim/site/pack/packer/start/ale",
     url = "https://github.com/dense-analysis/ale"
   },
+  ["chezmoi.vim"] = {
+    loaded = true,
+    path = "/home/domin/.local/share/nvim/site/pack/packer/start/chezmoi.vim",
+    url = "https://github.com/alker0/chezmoi.vim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/domin/.local/share/nvim/site/pack/packer/start/cmp-buffer",

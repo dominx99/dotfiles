@@ -1,6 +1,7 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+  use 'alker0/chezmoi.vim'
   use 'vim-utils/vim-man'
   use 'wbthomason/packer.nvim'
   use 'francoiscabrol/ranger.vim'

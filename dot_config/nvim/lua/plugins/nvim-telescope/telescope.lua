@@ -3,7 +3,18 @@ require('telescope').setup{
     layout_config = {
       width = 0.95,
       height = 0.95,
-    }
+    },
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden',
+      '-u'
+    },
   },
   extensions = {
     ["ui-select"] = {
