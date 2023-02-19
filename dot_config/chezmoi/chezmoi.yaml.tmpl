@@ -1,0 +1,32 @@
+{{- /* Template file for chezmoi config file */ -}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
+{{- $bspwm := false -}}{{/* true if this machine is using i3wm */}}
+{{- $swaywm := false -}}{{/* true if this machine is using swaywm */}}
+{{- $hyprlandwm := false -}}{{/* true if this machine is using hyprlandwm */}}
+
+{{- $hostname := .chezmoi.hostname -}}
+{{- if eq $hostname "T460S" -}}
+{{-   $headless = false -}}
+{{-   $kubernetes = false -}}
+{{-   $bspwm = true -}}
+{{-   $swaywm = false -}}
+{{-   $hyprlandwm = false -}}
+{{- end -}}
+
+data:
+  headless: {{ $headless }}
+  kubernetes: {{ $kubernetes }}
+  bspwm: {{ $bspwm }}
+  swaywm: {{ $swaywm }}
+  hyprlandwm: {{ $hyprlandwm }}
+format: yaml
+encryption: age
+merge:
+  command: nvim
+  args:
+    - -d
+    - "{{ "{{ .Destination }}" }}"
+    - "{{ "{{ .Source }}" }}"
+    - "{{ "{{ .Target }}" }}"
+

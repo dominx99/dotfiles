@@ -143,7 +143,7 @@ modules-left = battery
 [bar/main]
 inherit = bar/base
 background = ${colors.dark}
-monitor = eDP1
+monitor = ${env:MONITOR}
 
 width = 100%
 line-size = 1
@@ -371,7 +371,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlan0
+interface = ${env:WLAN}
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
