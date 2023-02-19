@@ -1,0 +1,192 @@
+{{ if (eq .chezmoi.osRelease.id "arch") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+echo -e "\033[0;32m>>>>> Begin Setting Up Arch Linux Packages <<<<<\033[0m"
+
+packages=(
+  xorg-server
+  xorg-xwininfo
+  xorg-xinit
+  xorg-xsetroot
+  xorg-xset
+  xorg-setxkbmap
+  xorg-xprop
+  xorg-xdpyinfo
+  xorg-xbacklight
+  xorg-xmodmap
+  sxhkd
+  ttf-inconsolata
+  ttf-font-awesome
+  ttf-linux-libertine
+  vifm
+  tree
+  arandr
+  picom
+  dosfstools
+  libnotify
+  dunst
+  exfat-utils
+  sxiv
+  xwallpaper
+  ffmpeg
+  gnome-keyring
+  i3lock
+  networkmanager
+  ntfs-3g
+  pulseaudio
+  pulseaudio-bluetooth
+  pulseaudio-alsa
+  pulsemixer
+  imagemagick
+  btop
+  maim
+  socat
+  tmux
+  unclutter
+  unrar
+  unzip
+  w3m
+  xcape
+  xclip
+  xdotool
+  youtube-dl
+  zathura
+  zathura-djvu
+  zathura-pdf-mupdf
+  poppler
+  mediainfo
+  atool
+  highlight
+  docx2txt
+  odt2txt
+  yarn
+  nodejs
+  chromium
+  ripgrep
+  docker
+  docker-compose
+  networkmanager-openconnect
+  network-manager-applet
+  polkit-gnome
+  seahorse
+  blueman
+  bluez
+  bluez-utils
+  fzf
+  the_silver_searcher
+  rsync
+  zsh
+  pkgfile
+  alsa-utils
+  trayer
+  ctags
+  bat
+  trash-cli
+  ttf-fira-code
+  ttf-fira-mono
+  ttf-firacode-nerd
+  bspwm
+  xdg-user-dirs
+  polybar
+  cmake
+  pass
+  rofi
+  alacritty
+  ranger
+  eog
+  fd
+  flameshot
+  php
+  composer
+  npm
+  python-pynvim
+  browserpass
+  browserpass-chromium
+)
+
+aur_packages=(
+  brave-bin
+  gtk-theme-arc-gruvbox-git
+  ttf-joypixels
+  ttf-symbola
+  sc-im
+  htop-vim-git
+  urlscan
+  python-ueberzug
+  simple-mtpfs
+  xflux
+  siji-git
+  ttf-unifont
+  nvim-packer-git
+  phpactor
+  brave-bin
+  chromium-widevine
+)
+
+python_packages=(
+  mycli
+)
+
+{{ if .bspwm -}}
+packages+=(
+)
+{{ end -}}
+
+echo "updating packages"
+{{ if ne .chezmoi.username "root" -}}
+sudo pacman -Syu --noconfirm
+{{ else -}}
+pacman -Syu --noconfirm
+{{ end -}}
+
+for package in ${packages[@]}; do
+  if [ "$(pacman -Qq $package 2> /dev/null)" != $package ]; then
+    echo "installing $package"
+{{-   if ne .chezmoi.username "root" }}
+    sudo pacman -S --noconfirm $package
+{{-   else }}
+    pacman -S --noconfirm $package
+{{-   end }}
+  fi
+done
+
+## Install yay
+if [ ! $(command -v yay) ]; then
+  echo "installing yay"
+{{-   if ne .chezmoi.username "root" }}
+  sudo pacman -S --needed --noconfirm git base-devel
+{{-   else}}
+  pacman -S --needed --noconfirm git base-devel
+{{-   end }}
+  git clone https://aur.archlinux.org/yay.git /tmp/yay
+  cd /tmp/yay
+  makepkg -si --noconfirm
+  rm -rf /tmp/yay
+fi
+
+for aur_package in ${aur_packages[@]}; do
+  if [ "$(pacman -Qq $aur_package 2> /dev/null)" != "$aur_package" ]; then
+    echo "installing $aur_package from AUR"
+    yay -S --noconfirm $aur_package
+  fi
+done
+
+## Install pip using pacman
+if [ ! $(command -v pip) ]; then
+  {{ if ne .chezmoi.username "root" -}}
+  sudo pacman -S --noconfirm python-pip
+  {{ else -}}
+  pacman -S --noconfirm python-pip
+  {{ end -}}
+fi
+
+## Install python packages
+for python_package in ${python_packages[@]}; do
+    echo "installing $python_package"
+    pip install "$python_package"
+done
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Arch Linux Packages <<<<<\033[0m"
+{{ end -}}
