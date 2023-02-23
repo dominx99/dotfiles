@@ -14,6 +14,14 @@
 {{-   $hyprlandwm = false -}}
 {{- end -}}
 
+{{- if eq $hostname "T14" -}}
+{{-   $headless = false -}}
+{{-   $kubernetes = false -}}
+{{-   $bspwm = true -}}
+{{-   $swaywm = false -}}
+{{-   $hyprlandwm = false -}}
+{{- end -}}
+
 data:
   headless: {{ $headless }}
   kubernetes: {{ $kubernetes }}
