@@ -3,7 +3,27 @@
 
 set -eufo pipefail
 
+name=$(cat /tmp/username)
+toolsdir="/home/$name/.tools"
+
 echo -e "\033[0;32m>>>>> Begin Setting Up Arch Linux Packages <<<<<\033[0m"
+
+manualinstall() {
+	# Installs $1 manually. Used only for AUR helper here.
+	# Should be run after repodir is created and var is set.
+	pacman -Qq "$1" && return 0
+	whiptail --infobox "Installing \"$1\" manually." 7 50
+	sudo -u "$name" mkdir -p "$toolsdir/$1"
+	sudo -u "$name" git -C "$toolsdir" clone --depth 1 --single-branch \
+		--no-tags -q "https://aur.archlinux.org/$1.git" "$toolsdir/$1" ||
+		{
+			cd "$toolsdir/$1" || return 1
+			sudo -u "$name" git pull --force origin master
+		}
+	cd "$toolsdir/$1" || exit 1
+	sudo -u "$name" -D "$toolsdir/$1" \
+		makepkg --noconfirm -si >/dev/null 2>&1 || return 1
+}
 
 packages=(
   xorg-server
@@ -161,16 +181,15 @@ if [ ! $(command -v yay) ]; then
 {{-   else}}
   pacman -S --needed --noconfirm git base-devel
 {{-   end }}
-  git clone https://aur.archlinux.org/yay.git /tmp/yay
-  cd /tmp/yay
-  makepkg -si --noconfirm
-  rm -rf /tmp/yay
+[ -f "/usr/bin/yay" ] || (
+
+manualinstall yay
 fi
 
 for aur_package in ${aur_packages[@]}; do
   if [ "$(pacman -Qq $aur_package 2> /dev/null)" != "$aur_package" ]; then
     echo "installing $aur_package from AUR"
-    yay -S --noconfirm $aur_package
+    sudo -u "$name" yay -S --noconfirm $aur_package
   fi
 done
 
@@ -186,7 +205,7 @@ fi
 ## Install python packages
 for python_package in ${python_packages[@]}; do
     echo "installing $python_package"
-    pip install "$python_package"
+    sudo -u "$name" pip install "$python_package"
 done
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Arch Linux Packages <<<<<\033[0m"
