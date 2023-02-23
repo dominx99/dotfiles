@@ -181,9 +181,7 @@ if [ ! $(command -v yay) ]; then
 {{-   else}}
   pacman -S --needed --noconfirm git base-devel
 {{-   end }}
-[ -f "/usr/bin/yay" ] || (
-
-manualinstall yay
+  manualinstall yay
 fi
 
 for aur_package in ${aur_packages[@]}; do
