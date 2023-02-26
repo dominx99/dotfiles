@@ -2,6 +2,12 @@
 
 name=$(cat /tmp/username)
 
+serviceinit() { for service in "$@"; do
+	dialog --infobox "Enabling \"$service\"..." 4 40
+	systemctl enable "$service"
+	systemctl start "$service"
+	done ;}
+
 resetpulse() { dialog --infobox "Reseting Pulseaudio..." 4 50
 	killall pulseaudio
 	sudo -u "$name" pulseaudio --start ;}
@@ -34,9 +40,7 @@ EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
 [ -f /usr/bin/pulseaudio ] && resetpulse
 
 # run service init if there is command "serviceinit"
-if [ -x "$(command -v serviceinit)" ]; then
-  serviceinit NetworkManager cronie docker
-fi
+serviceinit NetworkManager cronie docker
 
 # Install zgen
 if [ ! -d "/home/$name/.zgen" ]; then
