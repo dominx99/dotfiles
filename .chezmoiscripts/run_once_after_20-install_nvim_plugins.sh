@@ -7,7 +7,7 @@ vimplugininstall() {
 	mkdir -p "/home/$name/.config/nvim/autoload"
 	curl -Ls "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" >  "/home/$name/.config/nvim/autoload/plug.vim"
 	chown -R "$name:wheel" "/home/$name/.config/nvim"
-	sudo -u "$name" nvim -c "PackerCompile|q|q"
+	sudo -u "$name" nvim +PackerSync -c 'autocmd User PackerComplete quitall'
 }
 
 if [ ! -f "/home/$name/.config/nvim/autoload/plug.vim" ]; then
