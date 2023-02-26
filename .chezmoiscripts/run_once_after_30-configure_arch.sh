@@ -57,4 +57,5 @@ sudo echo "Defaults editor=/usr/bin/nvim" >/etc/sudoers.d/02-larbs-visudo-editor
 sudo mkdir -p /etc/sysctl.d
 sudo echo "kernel.dmesg_restrict = 0" > /etc/sysctl.d/dmesg.conf
 
+
 sudo [ -f /etc/sudoers.d/larbs-temp ] && sudo rm /etc/sudoers.d/larbs-temp
