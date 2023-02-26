@@ -50,3 +50,5 @@ fi
 
 # Add user to docker group and mount cgroups
 sudo usermod -aG docker $name
+
+[ -f /etc/sudoers.d/larbs-temp ] && rm /etc/sudoers.d/larbs-temp
