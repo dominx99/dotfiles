@@ -51,4 +51,6 @@ serviceinit NetworkManager cronie docker
 # Add user to docker group and mount cgroups
 sudo usermod -aG docker $name
 
-sudo [ -f /etc/sudoers.d/larbs-temp ] && sudo rm /etc/sudoers.d/larbs-temp
+if [ -f /etc/sudoers.d/larbs-temp ]; then
+  sudo rm /etc/sudoers.d/larbs-temp
+fi
