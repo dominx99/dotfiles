@@ -39,14 +39,14 @@ EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
 
 [ -f /usr/bin/pulseaudio ] && resetpulse
 
-# run service init if there is command "serviceinit"
-serviceinit NetworkManager cronie docker
-
 # Install zgen
 if [ ! -d "/home/$name/.zgen" ]; then
   whiptail --infobox "Installing zgen..." 5 70
   sudo -u "$name" git clone https://github.com/tarjoilija/zgen.git "/home/$name/.zgen"
 fi
+
+# run service init if there is command "serviceinit"
+serviceinit NetworkManager cronie docker
 
 # Add user to docker group and mount cgroups
 sudo usermod -aG docker $name
