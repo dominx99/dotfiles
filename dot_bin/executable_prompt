@@ -1,7 +1,8 @@
 #!/bin/sh
-# A dmenu binary prompt script.
-# Gives a dmenu prompt labeled with $1 to perform command $2.
-# For example:
-# `./prompt "Do you want to shutdown?" "shutdown -h now"`
 
-[ "$(printf "No\\nYes" | dmenu -i -p "$1" -nb darkred -sb red -sf white -nf gray )" = "Yes" ] && $2
+# Prompt for confirmation
+# $1: Prompt
+# $2: Command to run if confirmed
+
+[ "$(printf "No\\nYes" | rofi -dmenu -i -p "$1" -theme-str 'listview { scrollbar: false; }' -theme-str 'window { width: 20%; }' -theme-str 'listview { lines: 2; }' -theme-str 'entry { selected-color: #ff0000; }' )" = "Yes" ] && $2
+
