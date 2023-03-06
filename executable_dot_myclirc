@@ -120,21 +120,4 @@ select_where = select $1 from $2 where $3
 
 # DNS to call by -d option
 [alias_dsn]
-# example_dsn = mysql://[user[:password]@][netloc][:port][/dbname]
-secret = mysql://root:secret@127.0.0.1:3306
-household = mysql://root:root@10.200.1.3:3306/household
 root = mysql://root:root@127.0.0.1:3306
-bet = mysql://root:root@10.16.0.4:3306
-sylius = mysql://sylius:nopassword@10.12.0.7:3306
-thalento = mysql://root:root@10.12.0.3:3306
-ct = mysql://ctuser:cU8wrr5fLWjASXDb@127.0.0.1:3306/comote_translator
-np = mysql://root:nFlmAkZiJ49R8P6Ux7RvpPG1fTJeYwYD@127.0.0.1:3306
-np_network = mysql://root:nFlmAkZiJ49R8P6Ux7RvpPG1fTJeYwYD@10.50.0.24:3306
-fi = mysql://root:nFlmAkZiJ49R8P6Ux7RvpPG1fTJeYwYD@127.0.0.1:3306
-fi_network = mysql://root:nFlmAkZiJ49R8P6Ux7RvpPG1fTJeYwYD@10.50.0.7:3306
-fc = mysql://root:GVkWzX79k9uU3zjcQaNLws@127.0.0.1:3306
-fr = mysql://root:nFlmAkZiJ49R8P6Ux7RvpPG1fTJeYwYD@127.0.0.1:3306/flyers_reports
-adreports = mysql://adreports:secretpassword123@127.0.0.1:3306/adreports?serverVersion=mariadb-10.4.11
-ae = mysql://root:HrDk85hM6WEp2Rfs@127.0.0.1:3306
-esb = mysql://newspaper_esb:cKfb3ei8KyuNmHXMJ2xPQ6sUfxuSxc97@127.0.0.1:3306
-wallet = mysql://root:lCrwMYmf@10.200.0.12:3306
