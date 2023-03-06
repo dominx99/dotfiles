@@ -13,7 +13,15 @@ require('telescope').setup{
       '--column',
       '--smart-case',
       '--hidden',
-      '-u'
+      '-u',
+      '-g',
+      '!/var',
+      '-g',
+      '!/node_modules',
+      '-g',
+      '!web/build',
+      '-g',
+      '!node_modules'
     },
   },
   extensions = {
